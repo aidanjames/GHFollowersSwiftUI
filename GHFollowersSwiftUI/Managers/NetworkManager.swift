@@ -1,6 +1,6 @@
 //
 //  NetworkManager.swift
-//  GHFollowers
+//  GHFollowersSwiftUI
 //
 //  Created by Aidan Pendlebury on 24/02/2020.
 //  Copyright © 2020 Aidan Pendlebury. All rights reserved.
@@ -44,8 +44,10 @@ class NetworkManager {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let followers = try decoder.decode([Follower].self, from: data)
                 completed(followers, nil)
+                print(followers)
             } catch {
                 completed(nil, "The data received from the server was invalid. Please try again.")
+                print(error.localizedDescription)
             }
             
         }
