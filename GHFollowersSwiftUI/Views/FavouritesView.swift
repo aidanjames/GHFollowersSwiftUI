@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FavouritesView.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Aidan Pendlebury on 24/02/2020.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct FavouritesView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("TBC")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FavouritesView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FavouritesView()
     }
 }
