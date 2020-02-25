@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
 		3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D72404784C0076EB62 /* NetworkManager.swift */; };
 		3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648DA240480D40076EB62 /* UIApplication-ext.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
 		3D8648D72404784C0076EB62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D8648DA240480D40076EB62 /* UIApplication-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication-ext.swift"; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D1D1FD72405BE1E003EF1D9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3D8648D9240480C00076EB62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		3D89BFF124045FC70005A3C4 /* GHFollowersSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				3D1D1FD72405BE1E003EF1D9 /* Utilities */,
 				3D8648D9240480C00076EB62 /* Extensions */,
 				3DE95ED8240464DF0038892B /* Support */,
 				3DE95ED3240464C10038892B /* Model */,
@@ -209,6 +220,7 @@
 			files = (
 				3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */,
 				3DE95ED6240464D20038892B /* Follower.swift in Sources */,
+				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
 				3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */,

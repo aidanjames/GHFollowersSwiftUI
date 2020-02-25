@@ -32,7 +32,10 @@ struct SearchView: View {
                 NavigationLink(destination: FollowerListView(username: username), tag: 1, selection: $action) {
                     EmptyView()
                 }
-                Button(action: { self.action = 1 }) {
+                Button(action: {
+                    guard !self.username.isEmpty else { return }
+                    self.action = 1
+                }) {
                     HStack {
                         Spacer()
                         Text("Get Followers")
@@ -49,7 +52,12 @@ struct SearchView: View {
             }
             .navigationBarTitle("Search", displayMode: .large)
             .navigationBarHidden(true)
+//            .onAppear(perform: self.clearSearchField)
         }
+    }
+    
+    func clearSearchField() {
+        username = ""
     }
 
 }

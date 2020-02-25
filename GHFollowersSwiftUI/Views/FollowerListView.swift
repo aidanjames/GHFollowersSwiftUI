@@ -14,6 +14,7 @@ struct FollowerListView: View {
     @State private var hideNavBar = true
     @State private var followers = [Follower]()
     @State private var showErrorAlert = false
+    @State private var error = ""
     
     var body: some View {
         VStack {
@@ -27,21 +28,22 @@ struct FollowerListView: View {
         .navigationBarTitle("\(username)", displayMode: .large)
         .onAppear(perform: fetchFollowers)
         .alert(isPresented: $showErrorAlert) {
-            Alert(title: Text("No such user"), dismissButton: .cancel(Text("Ok")))
+            Alert(title: Text("Bad Stuff Happened"), message: Text(error), dismissButton: .cancel(Text("Ok")))
         }
     }
     
     func fetchFollowers() {
     
-        NetworkManager.shared.getFollowers(for: username, page: 1) { (followers, error) in
-            guard let followers = followers else {
+        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+            switch result {
+            case .success(let followers):
+                print("Followers.Count = \(followers.count)")
+                print(followers)
+                self.followers = followers
+            case .failure(let error):
+                self.error = error.rawValue
                 self.showErrorAlert = true
-                return
-            }
-            print("Followers.Count = \(followers.count)")
-            print(followers)
-            self.followers = followers
-    
+            }                
         }
         
         // This is a hugely annoying hack because there's a bug that automatically hides the nav bar even though I say navigationBarHidden(false)
