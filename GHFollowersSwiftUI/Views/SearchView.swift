@@ -52,12 +52,7 @@ struct SearchView: View {
             }
             .navigationBarTitle("Search", displayMode: .large)
             .navigationBarHidden(true)
-//            .onAppear(perform: self.clearSearchField)
         }
-    }
-    
-    func clearSearchField() {
-        username = ""
     }
 
 }

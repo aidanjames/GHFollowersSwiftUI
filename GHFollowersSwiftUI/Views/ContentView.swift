@@ -18,7 +18,6 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
-                        
             }
             FavouritesView()
                 .tabItem {

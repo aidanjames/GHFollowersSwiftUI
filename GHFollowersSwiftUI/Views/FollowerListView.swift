@@ -17,13 +17,12 @@ struct FollowerListView: View {
     @State private var error = ""
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(followers) { follower in
-                    Text(follower.login)
-                }
+        List {
+            ForEach(followers) { follower in
+                Text(follower.login)
             }
         }
+        .frame(width: UIScreen.main.bounds.width)
         .navigationBarHidden(hideNavBar)
         .navigationBarTitle("\(username)", displayMode: .large)
         .onAppear(perform: fetchFollowers)
@@ -32,14 +31,16 @@ struct FollowerListView: View {
         }
     }
     
-    func fetchFollowers() {
     
+    func fetchFollowers() {
+        
         NetworkManager.shared.getFollowers(for: username, page: 1) { result in
             switch result {
             case .success(let followers):
                 print("Followers.Count = \(followers.count)")
                 print(followers)
                 self.followers = followers
+                
             case .failure(let error):
                 self.error = error.rawValue
                 self.showErrorAlert = true

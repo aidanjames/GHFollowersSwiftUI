@@ -17,6 +17,7 @@
 		3D89BFF924045FC90005A3C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFF824045FC90005A3C4 /* Assets.xcassets */; };
 		3D89BFFC24045FC90005A3C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFFB24045FC90005A3C4 /* Preview Assets.xcassets */; };
 		3D89BFFF24045FC90005A3C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFFD24045FC90005A3C4 /* LaunchScreen.storyboard */; };
+		3DC0786B240705B7001EDEE6 /* FollowerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0786A240705B7001EDEE6 /* FollowerListItemView.swift */; };
 		3DE95ED6240464D20038892B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED4240464D20038892B /* Follower.swift */; };
 		3DE95ED7240464D20038892B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED5240464D20038892B /* User.swift */; };
 		3DE95EDA240466720038892B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED9240466720038892B /* SearchView.swift */; };
@@ -36,6 +37,7 @@
 		3D89BFFB24045FC90005A3C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3D89BFFE24045FC90005A3C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D89C00024045FC90005A3C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DC0786A240705B7001EDEE6 /* FollowerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListItemView.swift; sourceTree = "<group>"; };
 		3DE95ED4240464D20038892B /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follower.swift; path = ../../../GHFollowers/GHFollowers/Model/Follower.swift; sourceTree = "<group>"; };
 		3DE95ED5240464D20038892B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../GHFollowers/GHFollowers/Model/User.swift; sourceTree = "<group>"; };
 		3DE95ED9240466720038892B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				3DE95ED9240466720038892B /* SearchView.swift */,
 				3D8648D5240470630076EB62 /* FollowerListView.swift */,
 				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
+				3DC0786A240705B7001EDEE6 /* FollowerListItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
+				3DC0786B240705B7001EDEE6 /* FollowerListItemView.swift in Sources */,
 				3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */,
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
 				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
