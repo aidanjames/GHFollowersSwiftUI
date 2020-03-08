@@ -15,9 +15,15 @@ struct FollowerListView: View {
     @State private var followers = [Follower]()
     @State private var error = ""
     @State private var showingModalError = false
+    @State private var searchText = ""
     
     var followersChunked: [[Follower]] {
-        followers.chunked(into: 3)
+        if searchText.isEmpty {
+            return followers.chunked(into: 3)
+        } else {
+            let filteredFollowers = followers.filter { $0.login.lowercased().contains(self.searchText.lowercased()) }
+            return filteredFollowers.chunked(into: 3)
+        }
     }
     
     var body: some View {
@@ -31,6 +37,17 @@ struct FollowerListView: View {
                 }
             } else {
                 ScrollView {
+                    if !hideNavBar { // Hack so that it doesn't appear before the nav bar
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.secondary)
+                                .font(.headline)
+                            TextField("Search", text: $searchText)
+                        }
+                        .padding(8)
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
+                        .padding()
+                    }
                     if followersChunked.isEmpty { // Without this I was finding the view would sometimes load as empty for some reason. It seems like a bug.
                         HStack {
                             Spacer()
@@ -39,10 +56,10 @@ struct FollowerListView: View {
                         ForEach(followersChunked, id: \.self) { row in
                             HStack {
                                 ForEach(row) { follower in
-                                    FollowerCellView(image: Image("avatar-placeholder"), username: follower.login)
+                                    FollowerCellView(image: Image("unknown"), username: follower.login)
                                 }
-                                Spacer()
                             }
+                            .padding(.horizontal, 12)
                         }
                     }
                 }
@@ -59,7 +76,6 @@ struct FollowerListView: View {
             switch result {
             case .success(let followers):
                 print("Followers.Count = \(followers.count)")
-                //                print(followers)
                 self.followers = followers
                 print("Followers chuncked count: \(self.followersChunked.count)")
             case .failure(let error):

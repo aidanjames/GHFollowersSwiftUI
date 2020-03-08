@@ -22,13 +22,13 @@ struct FollowerCellView: View {
             Text(username)
             .lineLimit(1)
         }
-        .padding(8)
+        .padding(5)
     }
 }
 
 struct FollowerListItemView_Previews: PreviewProvider {
     static var previews: some View {
         FollowerCellView(image: Image("avatar-placeholder"), username: "aidanjames")
-            .frame(width: 300, height: 300)
+            .previewLayout(.sizeThatFits)
     }
 }
