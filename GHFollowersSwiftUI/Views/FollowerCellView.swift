@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FollowerListItemView: View {
+struct FollowerCellView: View {
     
     var image: Image
     var username: String
@@ -20,6 +20,7 @@ struct FollowerListItemView: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             Text(username)
+            .lineLimit(1)
         }
         .padding(8)
     }
@@ -27,7 +28,7 @@ struct FollowerListItemView: View {
 
 struct FollowerListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowerListItemView(image: Image("avatar-placeholder"), username: "aidanjames")
+        FollowerCellView(image: Image("avatar-placeholder"), username: "aidanjames")
             .frame(width: 300, height: 300)
     }
 }
