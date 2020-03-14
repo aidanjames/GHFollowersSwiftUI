@@ -55,8 +55,16 @@ struct FollowerListView: View {
                     } else {
                         ForEach(followersChunked, id: \.self) { row in
                             HStack {
-                                ForEach(row) { follower in
+                                ForEach(row, id: \.self) { follower in
                                     FollowerCellView(image: Image("unknown"), username: follower.login)
+                                }
+                                // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews
+                                if row.count == 2 {
+                                    FollowerCellView(image: Image(""), username: "")
+                                }
+                                if row.count == 1 {
+                                    FollowerCellView(image: Image(""), username: "")
+                                    FollowerCellView(image: Image(""), username: "")
                                 }
                             }
                             .padding(.horizontal, 12)
