@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0067C92422B9F300FEAE8A /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */; };
 		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
 		3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D72404784C0076EB62 /* NetworkManager.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
 		3D8648D72404784C0076EB62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
 				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
+				3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
 				3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */,
+				3D0067C92422B9F300FEAE8A /* ActivityIndicatorView.swift in Sources */,
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
 				3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */,
 				3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */,

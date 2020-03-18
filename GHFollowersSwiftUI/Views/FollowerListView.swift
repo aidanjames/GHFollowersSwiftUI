@@ -16,6 +16,9 @@ struct FollowerListView: View {
     @State private var error = ""
     @State private var showingModalError = false
     @State private var searchText = ""
+    @State private var activityIndicatorAnimating = true
+    @State private var moreFollowersAvailable = true
+    @State private var page = 1
     
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
@@ -26,65 +29,84 @@ struct FollowerListView: View {
         }
     }
     
+    init(username: String) {
+        self.username = username
+        // To remove all separators including the actual ones:
+        UITableView.appearance().separatorStyle = .none
+    }
+    
     var body: some View {
-        ZStack {
-            if showingModalError {
-                ZStack {
-                    Color.black
-                        .opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                    CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: error, callToActionButton: "Ok", showingModal: $showingModalError)
-                }
-            } else {
-                ScrollView {
-                    if !hideNavBar { // Hack so that it doesn't appear before the nav bar
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.secondary)
-                                .font(.headline)
-                            TextField("Search", text: $searchText)
-                        }
-                        .padding(8)
-                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
-                        .padding()
+            ZStack {
+                if showingModalError {
+                    ZStack {
+                        Color.black
+                            .opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                        CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
                     }
-                    if followersChunked.isEmpty { // Without this I was finding the view would sometimes load as empty for some reason. It seems like a bug.
-                        HStack {
-                            Spacer()
-                        }
-                    } else {
-                        ForEach(followersChunked, id: \.self) { row in
+                } else {
+                    List {
+                        if !hideNavBar { // Hack so that it doesn't appear before the nav bar
                             HStack {
-                                ForEach(row, id: \.self) { follower in
-                                    FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.secondary)
+                                    .font(.headline)
+                                TextField("Search", text: self.$searchText)
+                            }
+                            .padding(8)
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
+                            .padding()
+                        }
+                        if followersChunked.isEmpty { // Without this I was finding the view would sometimes load as empty for some reason. It seems like a bug.
+                            HStack {
+                                Spacer()
+                            }
+                        } else {
+                            ForEach(followersChunked, id: \.self) { row in
+                                HStack(spacing: 20) {
+                                    ForEach(row, id: \.self) { follower in
+                                        FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
+                                    }
+                                    // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews
+                                    if row.count == 2 && self.followersChunked.count > 0 {
+                                        FollowerCellView(username: "", imageURL: "")
+                                    }
+                                    if row.count == 1 && self.followersChunked.count > 0  {
+                                        FollowerCellView(username: "", imageURL: "")
+                                        FollowerCellView(username: "", imageURL: "")
+                                    }
                                 }
-                                // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews
-                                if row.count == 2 {
-                                    FollowerCellView(username: "", imageURL: "")
-                                }
-                                if row.count == 1 {
-                                    FollowerCellView(username: "", imageURL: "")
-                                    FollowerCellView(username: "", imageURL: "")
+                                .padding(.horizontal, 12)
+                                
+                            }
+                            if moreFollowersAvailable { // Paging functionality
+                                HStack {
+                                    Spacer()
+                                    ActivityIndicator(isAnimating: self.$activityIndicatorAnimating, style: .large)
+                                        .onAppear() {
+                                            self.page += 1
+                                            self.fetchFollowers()
+                                    }
+                                    Spacer()
                                 }
                             }
-                            .padding(.horizontal, 12)
                         }
                     }
                 }
             }
-        }
-        .navigationBarHidden(hideNavBar)
-        .navigationBarTitle("\(username)", displayMode: .large)
-        .onAppear(perform: fetchFollowers)
+            .navigationBarHidden(self.hideNavBar)
+            .navigationBarTitle("\(self.username)", displayMode: .large)
+            .onAppear(perform: self.fetchFollowers)
     }
     
     
     func fetchFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+        NetworkManager.shared.getFollowers(for: username, page: page) { result in
             switch result {
             case .success(let followers):
+                if followers.count < 100 { self.moreFollowersAvailable = false }
                 print("Followers.Count = \(followers.count)")
-                self.followers = followers
+                self.followers.append(contentsOf: followers)
                 print("Followers chuncked count: \(self.followersChunked.count)")
             case .failure(let error):
                 self.error = error.rawValue

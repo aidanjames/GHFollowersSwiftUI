@@ -26,9 +26,10 @@ struct FollowerCellView: View {
                     self.downloadImage(from: self.imageURL)
             }
             Text(username)
-            .lineLimit(1)
+                .fontWeight(.bold)
+                .lineLimit(1)
         }
-        .padding(5)
+        .padding(.vertical, 8)
     }
     
     func downloadImage(from urlString: String) {
