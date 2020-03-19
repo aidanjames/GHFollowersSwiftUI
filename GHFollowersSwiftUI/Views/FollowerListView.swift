@@ -20,6 +20,8 @@ struct FollowerListView: View {
     @State private var moreFollowersAvailable = true
     @State private var page = 1
     
+    @State private var loadingData = false
+    
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
             return followers.chunked(into: 3)
@@ -31,90 +33,88 @@ struct FollowerListView: View {
     
     init(username: String) {
         self.username = username
-        // To remove all separators including the actual ones:
+        // Because there's no easy way to hide list separators
         UITableView.appearance().separatorStyle = .none
     }
     
     var body: some View {
-            ZStack {
-                if showingModalError {
-                    ZStack {
-                        Color.black
-                            .opacity(0.4)
-                            .edgesIgnoringSafeArea(.all)
-                        CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
-                    }
-                } else {
-                    List {
-                        if !hideNavBar { // Hack so that it doesn't appear before the nav bar
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.secondary)
-                                    .font(.headline)
-                                TextField("Search", text: self.$searchText)
-                            }
-                            .padding(8)
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
-                            .padding()
+        ZStack {
+            if showingModalError {
+                ZStack {
+                    Color.black
+                        .opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                    CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
+                }
+            } else {
+                List {
+                    if !hideNavBar { // Hack so that it doesn't appear before the nav bar
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.secondary)
+                                .font(.headline)
+                            TextField("Search", text: self.$searchText)
                         }
-                        if followersChunked.isEmpty { // Without this I was finding the view would sometimes load as empty for some reason. It seems like a bug.
-                            HStack {
-                                Spacer()
-                            }
-                        } else {
-                            ForEach(followersChunked, id: \.self) { row in
-                                HStack(spacing: 20) {
-                                    ForEach(row, id: \.self) { follower in
-                                        FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
-                                    }
-                                    // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews
-                                    if row.count == 2 && self.followersChunked.count > 0 {
-                                        FollowerCellView(username: "", imageURL: "")
-                                    }
-                                    if row.count == 1 && self.followersChunked.count > 0  {
-                                        FollowerCellView(username: "", imageURL: "")
-                                        FollowerCellView(username: "", imageURL: "")
-                                    }
+                        .padding(8)
+                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
+                        .padding()
+                    }
+                    if followersChunked.count > 0 {
+                        ForEach(followersChunked, id: \.self) { row in
+                            HStack(spacing: 20) {
+                                ForEach(row, id: \.self) { follower in
+                                    FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                                 }
-                                .padding(.horizontal, 12)
-                                
-                            }
-                            if moreFollowersAvailable { // Paging functionality
-                                HStack {
-                                    Spacer()
-                                    ActivityIndicator(isAnimating: self.$activityIndicatorAnimating, style: .large)
-                                        .onAppear() {
-                                            self.page += 1
-                                            self.fetchFollowers()
-                                    }
-                                    Spacer()
+                                // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
+                                if row.count == 2 && self.followersChunked.count > 0 {
+                                    FollowerCellView(username: "", imageURL: "")
                                 }
+                                if row.count == 1 && self.followersChunked.count > 0  {
+                                    FollowerCellView(username: "", imageURL: "")
+                                    FollowerCellView(username: "", imageURL: "")
+                                }
+                            }
+                            .padding(.horizontal, 12)
+                            
+                        }
+                        if moreFollowersAvailable { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
+                            Circle().opacity(0).onAppear() {
+                                self.page += 1
+                                self.fetchFollowers()
                             }
                         }
                     }
                 }
+                
+                if loadingData {
+                    Color.white
+                        .opacity(0.8)
+                    ActivityIndicator(isAnimating: self.$activityIndicatorAnimating, style: .large)
+                }
+                
             }
-            .navigationBarHidden(self.hideNavBar)
-            .navigationBarTitle("\(self.username)", displayMode: .large)
-            .onAppear(perform: self.fetchFollowers)
+        }
+        .navigationBarHidden(self.hideNavBar)
+        .navigationBarTitle("\(self.username)", displayMode: .large)
+        .onAppear(perform: self.fetchFollowers)
     }
     
     
     func fetchFollowers() {
+        self.loadingData = true
         NetworkManager.shared.getFollowers(for: username, page: page) { result in
+            DispatchQueue.main.async { self.loadingData = false }
             switch result {
             case .success(let followers):
                 if followers.count < 100 { self.moreFollowersAvailable = false }
-                print("Followers.Count = \(followers.count)")
                 self.followers.append(contentsOf: followers)
-                print("Followers chuncked count: \(self.followersChunked.count)")
             case .failure(let error):
                 self.error = error.rawValue
                 self.showingModalError = true
             }                
         }
         
-        // This is a hugely annoying hack because there's a bug that automatically hides the nav bar even though I say navigationBarHidden(false)
+        // This is an annoying hack because there's a bug that automatically hides the nav bar even though I say navigationBarHidden(false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.hideNavBar  = false
         }
