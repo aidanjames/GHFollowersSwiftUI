@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D0067C92422B9F300FEAE8A /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */; };
+		3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */; };
+		3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD9A7242579C500B10FC2 /* FilterView.swift */; };
 		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
 		3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D72404784C0076EB62 /* NetworkManager.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		3D1AD9A7242579C500B10FC2 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
 		3D8648D72404784C0076EB62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -61,6 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D1AD9A52425775800B10FC2 /* FollowerListView */ = {
+			isa = PBXGroup;
+			children = (
+				3D8648D5240470630076EB62 /* FollowerListView.swift */,
+				3D1AD9A62425777600B10FC2 /* ComponentViews */,
+			);
+			path = FollowerListView;
+			sourceTree = "<group>";
+		};
+		3D1AD9A62425777600B10FC2 /* ComponentViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */,
+				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
+				3DE95ED9240466720038892B /* SearchView.swift */,
+				3D1AD9A7242579C500B10FC2 /* FilterView.swift */,
+			);
+			path = ComponentViews;
+			sourceTree = "<group>";
+		};
 		3D1D1FD72405BE1E003EF1D9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,11 +144,9 @@
 		3DE95ED0240464980038892B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D1AD9A52425775800B10FC2 /* FollowerListView */,
 				3D89BFF624045FC70005A3C4 /* ContentView.swift */,
-				3DE95ED9240466720038892B /* SearchView.swift */,
-				3D8648D5240470630076EB62 /* FollowerListView.swift */,
 				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
-				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
 				3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */,
 			);
@@ -240,6 +262,8 @@
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
 				3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */,
 				3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */,
+				3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */,
+				3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */,
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
 				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
 				3DE95EDA240466720038892B /* SearchView.swift in Sources */,

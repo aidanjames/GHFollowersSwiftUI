@@ -48,16 +48,8 @@ struct FollowerListView: View {
                 }
             } else {
                 List {
-                    if !hideNavBar { // Hack so that it doesn't appear before the nav bar
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.secondary)
-                                .font(.headline)
-                            TextField("Search", text: self.$searchText)
-                        }
-                        .padding(8)
-                        .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
-                        .padding()
+                    if !hideNavBar && !followersChunked.isEmpty { // Hack so that it doesn't appear before the nav bar
+                        FilterView(searchText: $searchText)
                     }
                     if followersChunked.count > 0 {
                         ForEach(followersChunked, id: \.self) { row in
@@ -90,6 +82,8 @@ struct FollowerListView: View {
                     Color.white
                         .opacity(0.8)
                     ActivityIndicator(isAnimating: self.$activityIndicatorAnimating, style: .large)
+                } else if !loadingData && followersChunked.isEmpty && !hideNavBar {
+                    EmptyStateView()
                 }
                 
             }
@@ -125,9 +119,11 @@ struct FollowerListView: View {
 
 struct FollowerListView_Previews: PreviewProvider {
     static var previews: some View {
-        return FollowerListView(username: "SAllen0400")
+        return FollowerListView(username: "SAllen0400xxxx")
     }
 }
+
+
 
 
 
