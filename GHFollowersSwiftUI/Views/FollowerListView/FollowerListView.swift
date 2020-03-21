@@ -21,6 +21,7 @@ struct FollowerListView: View {
     @State private var page = 1
     
     @State private var loadingData = false
+    @State private var showingEmptyStateView = false
     
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
@@ -77,15 +78,11 @@ struct FollowerListView: View {
                         }
                     }
                 }
-                
                 if loadingData {
-                    Color.white
-                        .opacity(0.8)
-                    ActivityIndicator(isAnimating: self.$activityIndicatorAnimating, style: .large)
-                } else if !loadingData && followersChunked.isEmpty && !hideNavBar {
+                    ActivityIndicatorView()
+                } else if showingEmptyStateView && !hideNavBar {
                     EmptyStateView()
                 }
-                
             }
         }
         .navigationBarHidden(self.hideNavBar)
@@ -102,6 +99,7 @@ struct FollowerListView: View {
             case .success(let followers):
                 if followers.count < 100 { self.moreFollowersAvailable = false }
                 self.followers.append(contentsOf: followers)
+                if self.followers.isEmpty { self.showingEmptyStateView = true }
             case .failure(let error):
                 self.error = error.rawValue
                 self.showingModalError = true

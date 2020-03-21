@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D0067C92422B9F300FEAE8A /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */; };
+		3D0067C92422B9F300FEAE8A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */; };
 		3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */; };
 		3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD9A7242579C500B10FC2 /* FilterView.swift */; };
 		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
@@ -22,6 +22,7 @@
 		3D89BFFC24045FC90005A3C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFFB24045FC90005A3C4 /* Preview Assets.xcassets */; };
 		3D89BFFF24045FC90005A3C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFFD24045FC90005A3C4 /* LaunchScreen.storyboard */; };
 		3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */; };
+		3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */; };
 		3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91BF2415370F004FB0BE /* Array-ext.swift */; };
 		3DE95ED6240464D20038892B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED4240464D20038892B /* Follower.swift */; };
 		3DE95ED7240464D20038892B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED5240464D20038892B /* User.swift */; };
@@ -30,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D1AD9A7242579C500B10FC2 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		3D89BFFE24045FC90005A3C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D89C00024045FC90005A3C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCellView.swift; sourceTree = "<group>"; };
+		3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3DCB91BF2415370F004FB0BE /* Array-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-ext.swift"; sourceTree = "<group>"; };
 		3DE95ED4240464D20038892B /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follower.swift; path = ../../../GHFollowers/GHFollowers/Model/Follower.swift; sourceTree = "<group>"; };
 		3DE95ED5240464D20038892B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../GHFollowers/GHFollowers/Model/User.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
 				3DE95ED9240466720038892B /* SearchView.swift */,
 				3D1AD9A7242579C500B10FC2 /* FilterView.swift */,
+				3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -148,7 +151,7 @@
 				3D89BFF624045FC70005A3C4 /* ContentView.swift */,
 				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
-				3D0067C82422B9F300FEAE8A /* ActivityIndicatorView.swift */,
+				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,7 +261,7 @@
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
 				3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */,
-				3D0067C92422B9F300FEAE8A /* ActivityIndicatorView.swift in Sources */,
+				3D0067C92422B9F300FEAE8A /* ActivityIndicator.swift in Sources */,
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
 				3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */,
 				3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */,
@@ -267,6 +270,7 @@
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
 				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
 				3DE95EDA240466720038892B /* SearchView.swift in Sources */,
+				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,
 				3DE95EDC240466FF0038892B /* FavouritesView.swift in Sources */,
 				3D89BFF724045FC70005A3C4 /* ContentView.swift in Sources */,
 			);
