@@ -17,37 +17,42 @@ struct CustomAlertView: View {
     @Binding var showingModal: Bool
     
     var body: some View {
-        VStack {
-            Text(titleLabel)
-                .font(.headline)
-                .bold()
-                .padding(.top, 20)
+        ZStack {
+            Color.black
+            .opacity(0.4)
+            .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text(titleLabel)
+                    .font(.headline)
+                    .bold()
+                    .padding(.top, 20)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
+                    .frame(height: 38)
+                Text(bodyLabel)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(4)
+                    .padding(.bottom, 20)
+                    .padding(.top, 8)
+                    .padding(.horizontal, 20)
+                Button(action: { self.showingModal = false }) {
+                        Text(callToActionButton)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .background(Color.pink)
+                    .cornerRadius(10)
+                }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
-                .frame(height: 38)
-            Text(bodyLabel)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .lineLimit(4)
-                .padding(.bottom, 20)
-                .padding(.top, 8)
-                .padding(.horizontal, 20)
-            Button(action: { self.showingModal = false }) {
-                    Text(callToActionButton)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 44)
-                        .background(Color.pink)
-                .cornerRadius(10)
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
+            .frame(width: 280, height: 220)
+            .background(Color.white)
+            .cornerRadius(16)
+            .shadow(radius: 20)
         }
-        .frame(width: 280, height: 220)
-        .background(Color.white)
-        .cornerRadius(16)
-        .shadow(radius: 20)
     }
 }
 

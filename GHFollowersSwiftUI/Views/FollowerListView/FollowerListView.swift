@@ -16,10 +16,8 @@ struct FollowerListView: View {
     @State private var error = ""
     @State private var showingModalError = false
     @State private var searchText = ""
-    @State private var activityIndicatorAnimating = true
     @State private var moreFollowersAvailable = true
     @State private var page = 1
-    
     @State private var loadingData = false
     @State private var showingEmptyStateView = false
     
@@ -41,12 +39,7 @@ struct FollowerListView: View {
     var body: some View {
         ZStack {
             if showingModalError {
-                ZStack {
-                    Color.black
-                        .opacity(0.4)
-                        .edgesIgnoringSafeArea(.all)
-                    CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
-                }
+                CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
             } else {
                 List {
                     if !hideNavBar && !followersChunked.isEmpty { // Hack so that it doesn't appear before the nav bar
@@ -68,7 +61,6 @@ struct FollowerListView: View {
                                 }
                             }
                             .padding(.horizontal, 12)
-                            
                         }
                         if moreFollowersAvailable { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
                             Circle().opacity(0).onAppear() {
@@ -117,7 +109,7 @@ struct FollowerListView: View {
 
 struct FollowerListView_Previews: PreviewProvider {
     static var previews: some View {
-        return FollowerListView(username: "SAllen0400xxxx")
+        return FollowerListView(username: "SAllen0400")
     }
 }
 
