@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomAlertView: View {
     
-    var titleLabel: String
+    var titleLabel: String = "Bad Stuff Happened"
     var bodyLabel: String
     var callToActionButton: String
     
@@ -58,9 +58,8 @@ struct CustomAlertView: View {
 
 struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        let title = "Bad Stuff Happened"
         let body = "Unable to complete your request. Please check your internet connection."
         let buttonText = "Ok"
-        return CustomAlertView(titleLabel: title, bodyLabel: body, callToActionButton: buttonText, showingModal: .constant(true))
+        return CustomAlertView(bodyLabel: body, callToActionButton: buttonText, showingModal: .constant(true))
     }
 }

@@ -38,43 +38,41 @@ struct FollowerListView: View {
     
     var body: some View {
         ZStack {
-            if showingModalError {
-                CustomAlertView(titleLabel: "Bad Stuff Happened", bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
-            } else {
-                List {
-                    if !hideNavBar && !followersChunked.isEmpty { // Hack so that it doesn't appear before the nav bar
-                        FilterView(searchText: $searchText)
-                    }
-                    if followersChunked.count > 0 {
-                        ForEach(followersChunked, id: \.self) { row in
-                            HStack(spacing: 20) {
-                                ForEach(row, id: \.self) { follower in
-                                    FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
-                                }
-                                // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
-                                if row.count == 2 && self.followersChunked.count > 0 {
-                                    FollowerCellView(username: "", imageURL: "")
-                                }
-                                if row.count == 1 && self.followersChunked.count > 0  {
-                                    FollowerCellView(username: "", imageURL: "")
-                                    FollowerCellView(username: "", imageURL: "")
-                                }
+            List {
+//                if !hideNavBar && !followersChunked.isEmpty { // Hack so that it doesn't appear before the nav bar
+//                    FilterView(searchText: $searchText)
+//                }
+                if followersChunked.count > 0 {
+                    ForEach(followersChunked, id: \.self) { row in
+                        HStack(spacing: 20) {
+                            ForEach(row, id: \.self) { follower in
+                                FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                             }
-                            .padding(.horizontal, 12)
+                            // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
+                            if row.count == 2 && self.followersChunked.count > 0 {
+                                FollowerCellView(username: "", imageURL: "")
+                            }
+                            if row.count == 1 && self.followersChunked.count > 0  {
+                                FollowerCellView(username: "", imageURL: "")
+                                FollowerCellView(username: "", imageURL: "")
+                            }
                         }
-                        if moreFollowersAvailable { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
-                            Circle().opacity(0).onAppear() {
-                                self.page += 1
-                                self.fetchFollowers()
-                            }
+                        .padding(.horizontal, 12)
+                    }
+                    if moreFollowersAvailable { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
+                        Circle().opacity(0).onAppear() {
+                            self.page += 1
+                            self.fetchFollowers()
                         }
                     }
                 }
-                if loadingData {
-                    ActivityIndicatorView()
-                } else if showingEmptyStateView && !hideNavBar {
-                    EmptyStateView()
-                }
+            }
+            if loadingData {
+                ActivityIndicatorView()
+            } else if showingEmptyStateView && !hideNavBar {
+                EmptyStateView()
+            } else if showingModalError {
+                CustomAlertView(bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
             }
         }
         .navigationBarHidden(self.hideNavBar)
