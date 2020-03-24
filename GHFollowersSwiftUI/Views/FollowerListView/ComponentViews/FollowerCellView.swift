@@ -11,8 +11,8 @@ import SwiftUI
 struct FollowerCellView: View {
     
     @State private var image: Image = Image("avatar-placeholder")
-    var username: String
-    var imageURL: String
+    var username: String = ""
+    var imageURL: String = ""
     let cache = NetworkManager.shared.cache
     
     var body: some View {
@@ -25,12 +25,11 @@ struct FollowerCellView: View {
                     if self.imageURL.isEmpty { self.image = Image("") }
                     self.downloadImage(from: self.imageURL)
             }
-            Text(username)
-                .fontWeight(.bold)
-                .lineLimit(1)
+            Text(username).fontWeight(.bold).lineLimit(1)
         }
         .padding(.vertical, 8)
     }
+    
     
     func downloadImage(from urlString: String) {
         

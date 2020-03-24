@@ -32,8 +32,7 @@ struct FollowerListView: View {
     
     init(username: String) {
         self.username = username
-        // Because there's no easy way to hide list separators
-        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().separatorStyle = .none // Because there's no easy way to hide list separators
     }
     
     var body: some View {
@@ -49,12 +48,10 @@ struct FollowerListView: View {
                                 FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                             }
                             // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
-                            if row.count == 2 && self.followersChunked.count > 0 {
-                                FollowerCellView(username: "", imageURL: "")
-                            }
-                            if row.count == 1 && self.followersChunked.count > 0  {
-                                FollowerCellView(username: "", imageURL: "")
-                                FollowerCellView(username: "", imageURL: "")
+                            if !self.followersChunked.isEmpty && row.count < 3 {
+                                ForEach(1...(3 - row.count), id: \.self) { _ in
+                                    FollowerCellView()
+                                }
                             }
                         }
                         .padding(.horizontal, 12)

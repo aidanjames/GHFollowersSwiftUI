@@ -16,12 +16,12 @@ struct ContentView: View {
         TabView {
             SearchView()
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "magnifyingglass").font(.headline)
                     Text("Search")
             }
             FavouritesView()
                 .tabItem {
-                    Image(systemName: "star")
+                    Image(systemName: "star.fill").font(.headline)
                     Text("Favourites")
             }
         }.accentColor(.green)
