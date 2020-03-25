@@ -38,10 +38,8 @@ struct FollowerListView: View {
     var body: some View {
         ZStack {
             List {
-//                if !hideNavBar && !followersChunked.isEmpty { // Hack so that it doesn't appear before the nav bar
-//                    FilterView(searchText: $searchText)
-//                }
-                if followersChunked.count > 0 {
+                if followersChunked.count > 0 || !searchText.isEmpty {
+                    FilterView(searchText: $searchText, navigationTitleHidden: $hideNavBar)
                     ForEach(followersChunked, id: \.self) { row in
                         HStack(spacing: 20) {
                             ForEach(row, id: \.self) { follower in
