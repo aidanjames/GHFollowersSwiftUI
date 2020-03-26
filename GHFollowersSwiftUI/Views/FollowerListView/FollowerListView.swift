@@ -54,7 +54,7 @@ struct FollowerListView: View {
                         }
                         .padding(.horizontal, 12)
                     }
-                    if moreFollowersAvailable { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
+                    if moreFollowersAvailable && searchText.isEmpty { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
                         Circle().opacity(0).onAppear() {
                             self.page += 1
                             self.fetchFollowers()
@@ -95,7 +95,6 @@ struct FollowerListView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.hideNavBar  = false
         }
-        
         
     }
 }
