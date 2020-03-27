@@ -20,6 +20,8 @@ struct FollowerListView: View {
     @State private var page = 1
     @State private var loadingData = false
     @State private var showingEmptyStateView = false
+    @State private var showingUserInfoView = false
+    @State private var selectedUser = ""
     
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
@@ -43,7 +45,11 @@ struct FollowerListView: View {
                     ForEach(followersChunked, id: \.self) { row in
                         HStack(spacing: 20) {
                             ForEach(row, id: \.self) { follower in
-                                FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
+                                Button(action: { self.presentUserInfoView(for: follower.login) }) {
+                                    FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser) }
                             }
                             // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
                             if !self.followersChunked.isEmpty && row.count < 3 {
@@ -96,6 +102,12 @@ struct FollowerListView: View {
             self.hideNavBar  = false
         }
         
+    }
+    
+    
+    func presentUserInfoView(for user: String) {
+        self.selectedUser = user
+        self.showingUserInfoView.toggle()
     }
 }
 
