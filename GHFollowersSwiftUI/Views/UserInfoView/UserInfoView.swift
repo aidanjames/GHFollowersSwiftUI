@@ -11,19 +11,43 @@ import SwiftUI
 struct UserInfoView: View {
     
     var username: String
+    @State private var user: User?
+    @State private var showingError = false
+    @State private var error: String?
     
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
-            Text(username)
-                .navigationBarTitle(Text(""), displayMode: .inline)
-                .navigationBarItems(trailing:
-                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                        Text("Done").foregroundColor(.green)
-                    }
-            )
+        ZStack {
+            NavigationView {
+                Text(username)
+                    .onAppear(perform: fetchUserInfo)
+                    .navigationBarTitle(Text(""), displayMode: .inline)
+                    .navigationBarItems(trailing:
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                            Text("Done").foregroundColor(.green)
+                        }
+                )
+                
+            }
+            if showingError {
+                CustomAlertView(titleLabel: "Something went wrong", bodyLabel: error ?? "Unknown error", callToActionButton: "Ok", showingModal: $showingError)
+            }
         }
+    }
+    
+    func fetchUserInfo() {
+        
+        NetworkManager.shared.getUserInfo(for: username) { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                self.error = error.rawValue
+                self.showingError = true
+            }
+        }
+        
     }
 }
 
