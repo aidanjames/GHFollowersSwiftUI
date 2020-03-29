@@ -45,7 +45,10 @@ struct FollowerListView: View {
                     ForEach(followersChunked, id: \.self) { row in
                         HStack(spacing: 20) {
                             ForEach(row, id: \.self) { follower in
-                                Button(action: { self.presentUserInfoView(for: follower.login) }) {
+                                Button(action: {
+                                    self.selectedUser = follower.login
+                                    self.showingUserInfoView.toggle()
+                                }) {
                                     FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -81,7 +84,6 @@ struct FollowerListView: View {
         .onAppear(perform: self.fetchFollowers)
     }
     
-    
     func fetchFollowers() {
         self.loadingData = true
         NetworkManager.shared.getFollowers(for: username, page: page) { result in
@@ -103,12 +105,7 @@ struct FollowerListView: View {
         }
         
     }
-    
-    
-    func presentUserInfoView(for user: String) {
-        self.selectedUser = user
-        self.showingUserInfoView.toggle()
-    }
+
 }
 
 struct FollowerListView_Previews: PreviewProvider {
