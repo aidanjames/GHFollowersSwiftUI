@@ -11,6 +11,9 @@
 		3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */; };
 		3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD9A7242579C500B10FC2 /* FilterView.swift */; };
 		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
+		3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7703B0243291A300588C40 /* HeaderInfoView.swift */; };
+		3D7703B3243291C700588C40 /* UserInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7703B2243291C700588C40 /* UserInfoItemView.swift */; };
+		3D7703B62432921F00588C40 /* ItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7703B52432921F00588C40 /* ItemInfoView.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
 		3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D72404784C0076EB62 /* NetworkManager.swift */; };
 		3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648DA240480D40076EB62 /* UIApplication-ext.swift */; };
@@ -36,6 +39,9 @@
 		3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D1AD9A7242579C500B10FC2 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		3D7703B0243291A300588C40 /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
+		3D7703B2243291C700588C40 /* UserInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoItemView.swift; sourceTree = "<group>"; };
+		3D7703B52432921F00588C40 /* ItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoView.swift; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
 		3D8648D72404784C0076EB62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3D8648DA240480D40076EB62 /* UIApplication-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication-ext.swift"; sourceTree = "<group>"; };
@@ -98,6 +104,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		3D7703B4243291E800588C40 /* ComponentViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D7703B0243291A300588C40 /* HeaderInfoView.swift */,
+				3D7703B2243291C700588C40 /* UserInfoItemView.swift */,
+				3D7703B52432921F00588C40 /* ItemInfoView.swift */,
+			);
+			path = ComponentViews;
+			sourceTree = "<group>";
+		};
 		3D8648D9240480C00076EB62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				3DA5CBD4242E928600DEB805 /* UserInfoView.swift */,
+				3D7703B4243291E800588C40 /* ComponentViews */,
 			);
 			path = UserInfoView;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */,
+				3D7703B3243291C700588C40 /* UserInfoItemView.swift in Sources */,
 				3D892387240ED1660072761E /* CustomAlertView.swift in Sources */,
 				3DE95ED6240464D20038892B /* Follower.swift in Sources */,
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
@@ -280,7 +298,9 @@
 				3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */,
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
 				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
+				3D7703B62432921F00588C40 /* ItemInfoView.swift in Sources */,
 				3DE95EDA240466720038892B /* SearchView.swift in Sources */,
+				3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */,
 				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,
 				3DE95EDC240466FF0038892B /* FavouritesView.swift in Sources */,
 				3DA5CBD5242E928600DEB805 /* UserInfoView.swift in Sources */,
