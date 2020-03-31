@@ -20,8 +20,13 @@ struct UserInfoView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                Text(username)
-                    .onAppear(perform: fetchUserInfo)
+                VStack {
+                    if user != nil {
+                        HeaderInfoView(user: user!)
+                    }
+                    Spacer()
+                }
+                .onAppear(perform: fetchUserInfo)
                     .navigationBarTitle(Text(""), displayMode: .inline)
                     .navigationBarItems(trailing:
                         Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
@@ -53,7 +58,7 @@ struct UserInfoView: View {
 
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        let username = "aidanjp"
+        let username = "aidanjames"
         return UserInfoView(username: username)
     }
 }

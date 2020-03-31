@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class NetworkManager {
     static let shared = NetworkManager()
@@ -92,6 +93,5 @@ class NetworkManager {
         
         task.resume()
     }
-    
     
 }
