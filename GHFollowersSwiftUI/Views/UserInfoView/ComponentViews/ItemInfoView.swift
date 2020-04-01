@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ItemInfoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Rectangle()
+            .foregroundColor(.blue)
+            .frame(height: 140)
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
     }
 }
 
