@@ -25,7 +25,7 @@ struct HeaderInfoView: View {
                     .padding(.leading, 20)
                     .padding(.top, 20)
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(user.login).font(.largeTitle).fontWeight(.bold).padding(.top)
+                    Text(user.login).font(.largeTitle).fontWeight(.bold).padding(.top).lineLimit(1)
                     Text(user.name ?? "").foregroundColor(.gray)
                     HStack {
                         Image(systemName: "mappin.and.ellipse")

@@ -23,8 +23,8 @@ struct UserInfoView: View {
                 VStack {
                     if user != nil {
                         HeaderInfoView(user: user!)
-                        UserInfoItemView()
-                        ItemInfoView()
+                        UserInfoItemView(user: user!)
+                        ItemInfoView(user: user!)
                     }
                     Spacer()
                 }
