@@ -11,7 +11,7 @@ import SwiftUI
 struct ActivityIndicatorView: View {
     var body: some View {
         ZStack {
-            Color.white.opacity(0.8).edgesIgnoringSafeArea(.all)
+            Color(UIColor.secondarySystemBackground).opacity(0.8).edgesIgnoringSafeArea(.all)
             ActivityIndicator(style: .large)
         }
     }

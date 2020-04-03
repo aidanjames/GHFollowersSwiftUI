@@ -22,12 +22,17 @@ struct SearchView: View {
                     .frame(width: 200, height: 200)
                     .padding(.top, 80)
                 TextField("Enter a username", text: $username)
+                    .padding(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.primary, lineWidth: 2)
+                    )
+                    .padding()
                     .multilineTextAlignment(TextAlignment.center)
                     .disableAutocorrection(true)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.title)
-                    .padding(.horizontal, 50)
-                    .padding(.top, 48)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 40)
                 Spacer()
                 NavigationLink(destination: FollowerListView(username: username), tag: 1, selection: $action) {
                     EmptyView()
@@ -54,7 +59,7 @@ struct SearchView: View {
             .navigationBarHidden(true)
         }
     }
-
+    
 }
 
 struct SearchView_Previews: PreviewProvider {

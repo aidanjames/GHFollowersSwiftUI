@@ -76,7 +76,7 @@ struct FollowerListView: View {
             } else if showingEmptyStateView && !hideNavBar {
                 EmptyStateView()
             } else if showingModalError {
-                CustomAlertView(bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError)
+                CustomAlertView(bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError).edgesIgnoringSafeArea(.all)
             }
         }
         .navigationBarHidden(self.hideNavBar)

@@ -15,12 +15,11 @@ struct CustomAlertView: View {
     var callToActionButton: String
     
     @Binding var showingModal: Bool
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ZStack {
-            Color.black
-            .opacity(0.4)
-            .edgesIgnoringSafeArea(.all)
+            Color.secondary.opacity(0.4).edgesIgnoringSafeArea(.all)
             VStack {
                 Text(titleLabel)
                     .font(.headline)
@@ -49,7 +48,7 @@ struct CustomAlertView: View {
                 .padding(.bottom, 20)
             }
             .frame(width: 280, height: 220)
-            .background(Color.white)
+            .background(colorScheme == .light ?  Color.white : Color.black)
             .cornerRadius(16)
             .shadow(radius: 20)
         }

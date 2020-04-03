@@ -13,17 +13,15 @@ struct ItemInfoView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.blue)
-                
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-            
+                .foregroundColor(Color(UIColor.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 18))
             VStack {
                 HStack {
                     CountView(image: Image(systemName: "heart"), countType: "Following", count: user.following)
                     Spacer()
                     CountView(image: Image(systemName: "person.2"), countType: "Followers", count: user.followers)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 20)
                 .padding(.top)
                 Spacer()
                 HStack {

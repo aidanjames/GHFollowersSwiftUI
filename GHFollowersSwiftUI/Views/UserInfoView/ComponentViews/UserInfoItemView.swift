@@ -15,17 +15,15 @@ struct UserInfoItemView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.pink)
-                
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-            
+                .foregroundColor(Color(UIColor.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 18))            
             VStack {
                 HStack {
                     CountView(image: Image(systemName: "folder"), countType: "Public Repos", count: user.publicRepos)
                     Spacer()
                     CountView(image: Image(systemName: "text.alignleft"), countType: "Public Gists", count: user.publicGists)
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 20)
                 .padding(.top)
                 Spacer()
                 HStack {
