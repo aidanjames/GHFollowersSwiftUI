@@ -1,5 +1,5 @@
 //
-//  UserInfoItemView.swift
+//  ItemInfoView.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Aidan Pendlebury on 30/03/2020.
@@ -8,33 +8,31 @@
 
 import SwiftUI
 
-struct UserInfoItemView: View {
-    
+struct ItemInfoView2: View {
     var user: User
-    
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 18))            
+                .clipShape(RoundedRectangle(cornerRadius: 18))
             VStack {
                 HStack {
-                    CountView(image: Image(systemName: "folder"), countType: "Public Repos", count: user.publicRepos)
+                    CountView(image: Image(systemName: "heart"), countType: "Following", count: user.following)
                     Spacer()
-                    CountView(image: Image(systemName: "text.alignleft"), countType: "Public Gists", count: user.publicGists)
+                    CountView(image: Image(systemName: "person.2"), countType: "Followers", count: user.followers)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top)
                 Spacer()
                 HStack {
                     Spacer()
-                    Text("GitHub Profile")
+                    Text("Get Followers")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .frame(height: 50)
-                .background(Color.purple)
+                .background(Color.green)
                 .cornerRadius(10)
                 .padding(20)
             }
@@ -46,9 +44,9 @@ struct UserInfoItemView: View {
     }
 }
 
-struct UserInfoItemView_Previews: PreviewProvider {
+struct ItemInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let user = User(login: "aidanjames", avatarUrl: "", name: "Aidan Pendlebury", location: "London", bio: "I'm just a guy, standing in front of nothing.", publicRepos: 8, publicGists: 7, htmlUrl: "", following: 2, followers: 54, createdAt: "")
-        return UserInfoItemView(user: user)
+        return ItemInfoView2(user: user)
     }
 }

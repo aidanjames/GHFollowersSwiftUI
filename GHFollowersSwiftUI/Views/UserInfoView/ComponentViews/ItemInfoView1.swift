@@ -1,5 +1,5 @@
 //
-//  ItemInfoView.swift
+//  UserInfoItemView.swift
 //  GHFollowersSwiftUI
 //
 //  Created by Aidan Pendlebury on 30/03/2020.
@@ -8,31 +8,33 @@
 
 import SwiftUI
 
-struct ItemInfoView: View {
+struct ItemInfoView1: View {
+    
     var user: User
+    
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 18))
+                .clipShape(RoundedRectangle(cornerRadius: 18))            
             VStack {
                 HStack {
-                    CountView(image: Image(systemName: "heart"), countType: "Following", count: user.following)
+                    CountView(image: Image(systemName: "folder"), countType: "Public Repos", count: user.publicRepos)
                     Spacer()
-                    CountView(image: Image(systemName: "person.2"), countType: "Followers", count: user.followers)
+                    CountView(image: Image(systemName: "text.alignleft"), countType: "Public Gists", count: user.publicGists)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top)
                 Spacer()
                 HStack {
                     Spacer()
-                    Text("Get Followers")
+                    Text("GitHub Profile")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
                 }
                 .frame(height: 50)
-                .background(Color.green)
+                .background(Color.purple)
                 .cornerRadius(10)
                 .padding(20)
             }
@@ -44,9 +46,9 @@ struct ItemInfoView: View {
     }
 }
 
-struct ItemInfoView_Previews: PreviewProvider {
+struct UserInfoItemView_Previews: PreviewProvider {
     static var previews: some View {
         let user = User(login: "aidanjames", avatarUrl: "", name: "Aidan Pendlebury", location: "London", bio: "I'm just a guy, standing in front of nothing.", publicRepos: 8, publicGists: 7, htmlUrl: "", following: 2, followers: 54, createdAt: "")
-        return ItemInfoView(user: user)
+        return ItemInfoView1(user: user)
     }
 }
