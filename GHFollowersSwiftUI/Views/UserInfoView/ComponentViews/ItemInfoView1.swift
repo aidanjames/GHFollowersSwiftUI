@@ -16,7 +16,9 @@ struct ItemInfoView1: View {
         ZStack {
             Rectangle()
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
-                .clipShape(RoundedRectangle(cornerRadius: 18))            
+                .clipShape(RoundedRectangle(cornerRadius: 18))
+            .frame(height: 140)
+
             VStack {
                 HStack {
                     CountView(image: Image(systemName: "folder"), countType: "Public Repos", count: user.publicRepos)
@@ -24,7 +26,7 @@ struct ItemInfoView1: View {
                     CountView(image: Image(systemName: "text.alignleft"), countType: "Public Gists", count: user.publicGists)
                 }
                 .padding(.horizontal, 20)
-                .padding(.top)
+                .padding(.top, 20)
                 Spacer()
                 HStack {
                     Spacer()
@@ -36,7 +38,8 @@ struct ItemInfoView1: View {
                 .frame(height: 50)
                 .background(Color.purple)
                 .cornerRadius(10)
-                .padding(20)
+                .padding(.bottom, 20)
+                .padding(.horizontal, 20)
             }
             
         }

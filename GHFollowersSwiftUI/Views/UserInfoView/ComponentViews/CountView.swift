@@ -19,9 +19,13 @@ struct CountView: View {
             HStack(spacing: 0) {
                 image
                 Text(countType)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
                     .padding(.leading, 12)
             }
             Text("\(count)")
+                .font(.subheadline)
+                .fontWeight(.bold)
                 .frame(height: 18)
                 .padding(.top, 4)
         }

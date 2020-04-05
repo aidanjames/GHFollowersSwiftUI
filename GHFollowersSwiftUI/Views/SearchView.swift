@@ -25,7 +25,7 @@ struct SearchView: View {
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.primary, lineWidth: 2)
+                            .stroke(Color.secondary, lineWidth: 2)
                     )
                     .padding()
                     .multilineTextAlignment(TextAlignment.center)

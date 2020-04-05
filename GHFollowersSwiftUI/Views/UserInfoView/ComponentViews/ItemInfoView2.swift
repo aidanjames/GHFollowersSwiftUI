@@ -15,11 +15,13 @@ struct ItemInfoView2: View {
             Rectangle()
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 18))
+                .frame(height: 140)
+            
             VStack {
                 HStack {
-                    CountView(image: Image(systemName: "heart"), countType: "Following", count: user.following)
-                    Spacer()
                     CountView(image: Image(systemName: "person.2"), countType: "Followers", count: user.followers)
+                    Spacer()
+                    CountView(image: Image(systemName: "heart"), countType: "Following", count: user.following)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top)
@@ -34,7 +36,8 @@ struct ItemInfoView2: View {
                 .frame(height: 50)
                 .background(Color.green)
                 .cornerRadius(10)
-                .padding(20)
+                .padding(.bottom, 20)
+                .padding(.horizontal, 20)
             }
             
         }
