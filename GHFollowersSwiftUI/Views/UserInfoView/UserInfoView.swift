@@ -25,6 +25,7 @@ struct UserInfoView: View {
                         HeaderInfoView(user: user!)
                         ItemInfoView1(user: user!)
                         ItemInfoView2(user: user!)
+                        Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
                     }
                     Spacer()
                 }

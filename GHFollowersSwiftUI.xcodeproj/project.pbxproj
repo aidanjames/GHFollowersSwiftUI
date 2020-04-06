@@ -27,6 +27,8 @@
 		3D89BFFF24045FC90005A3C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D89BFFD24045FC90005A3C4 /* LaunchScreen.storyboard */; };
 		3DA5CBD5242E928600DEB805 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5CBD4242E928600DEB805 /* UserInfoView.swift */; };
 		3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */; };
+		3DC51FA7243BBEB200EB768A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC51FA6243BBEB200EB768A /* Date+Ext.swift */; };
+		3DC51FA9243BBEBB00EB768A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC51FA8243BBEBB00EB768A /* String+Ext.swift */; };
 		3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */; };
 		3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91BF2415370F004FB0BE /* Array-ext.swift */; };
 		3DE95ED6240464D20038892B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED4240464D20038892B /* Follower.swift */; };
@@ -58,6 +60,8 @@
 		3D89C00024045FC90005A3C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DA5CBD4242E928600DEB805 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCellView.swift; sourceTree = "<group>"; };
+		3DC51FA6243BBEB200EB768A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		3DC51FA8243BBEBB00EB768A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3DCB91BF2415370F004FB0BE /* Array-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-ext.swift"; sourceTree = "<group>"; };
 		3DE95ED4240464D20038892B /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follower.swift; path = ../../../GHFollowers/GHFollowers/Model/Follower.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 			children = (
 				3D8648DA240480D40076EB62 /* UIApplication-ext.swift */,
 				3DCB91BF2415370F004FB0BE /* Array-ext.swift */,
+				3DC51FA6243BBEB200EB768A /* Date+Ext.swift */,
+				3DC51FA8243BBEBB00EB768A /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */,
 				3D7703B3243291C700588C40 /* ItemInfoView1.swift in Sources */,
 				3D7B0BAD2436619C0070AC45 /* CountView.swift in Sources */,
+				3DC51FA7243BBEB200EB768A /* Date+Ext.swift in Sources */,
 				3D892387240ED1660072761E /* CustomAlertView.swift in Sources */,
 				3DE95ED6240464D20038892B /* Follower.swift in Sources */,
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
@@ -303,6 +310,7 @@
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
 				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
 				3D7703B62432921F00588C40 /* ItemInfoView2.swift in Sources */,
+				3DC51FA9243BBEBB00EB768A /* String+Ext.swift in Sources */,
 				3DE95EDA240466720038892B /* SearchView.swift in Sources */,
 				3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */,
 				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,
