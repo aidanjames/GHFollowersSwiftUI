@@ -23,8 +23,8 @@ struct UserInfoView: View {
                 VStack {
                     if user != nil {
                         HeaderInfoView(user: user!)
-                        ItemInfoView1(user: user!)
-                        ItemInfoView2(user: user!)
+                        ItemInfoView(user: user!, itemInfoType: .repos)
+                        ItemInfoView(user: user!, itemInfoType: .followers)
                         Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
                     }
                     Spacer()
