@@ -23,28 +23,16 @@ struct ItemInfoView: View {
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 18))
                 .frame(height: 140)
-            
             VStack {
                 HStack {
                     CountView(image: Image(systemName: itemInfoType == .repos ? "folder" : "person.2"), countType: itemInfoType == .repos ? "Public Repos" : "Followers", count: itemInfoType == .repos ? user.publicRepos : user.followers)
                     Spacer()
                     CountView(image: Image(systemName: itemInfoType == .repos ? "text.alignleft" : "heart"), countType: itemInfoType == .repos ? "Public Gists" : "Following", count: itemInfoType == .repos ? user.publicGists : user.following)
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
+                }.padding(.horizontal, 20).padding(.top, 20)
                 Spacer()
-                HStack {
-                    Spacer()
-                    Text(itemInfoType == .repos ? "GitHub Profile" : "Get Followers")
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                    Spacer()
-                }
-                .frame(height: 50)
-                .background(itemInfoType == .repos ? Color.purple : Color.green)
-                .cornerRadius(10)
-                .padding(.bottom, 20)
-                .padding(.horizontal, 20)
+                ButtonView(color: itemInfoType == .repos ? .purple : .green, text: itemInfoType == .repos ? "GitHub Profile" : "Get Followers") {
+                    print("This works")
+                }.padding(.bottom, 20).padding(.horizontal, 20)
             }
         }
         .frame(height: 140)
