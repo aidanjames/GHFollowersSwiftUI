@@ -151,12 +151,12 @@
 		3D89BFF124045FC70005A3C4 /* GHFollowersSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				3DE95ED0240464980038892B /* Views */,
+				3DE95ED3240464C10038892B /* Model */,
 				3D1D1FD72405BE1E003EF1D9 /* Utilities */,
 				3D8648D9240480C00076EB62 /* Extensions */,
 				3DE95ED8240464DF0038892B /* Support */,
-				3DE95ED3240464C10038892B /* Model */,
 				3DE95ED1240464A30038892B /* Managers */,
-				3DE95ED0240464980038892B /* Views */,
 				3D89C00024045FC90005A3C4 /* Info.plist */,
 				3D89BFFA24045FC90005A3C4 /* Preview Content */,
 			);
@@ -169,6 +169,24 @@
 				3D89BFFB24045FC90005A3C4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3DA44228243F77B4008A1A39 /* FavouritesView */ = {
+			isa = PBXGroup;
+			children = (
+				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
+			);
+			path = FavouritesView;
+			sourceTree = "<group>";
+		};
+		3DA44229243F77E5008A1A39 /* SharedComponentViews */ = {
+			isa = PBXGroup;
+			children = (
+				3D892386240ED1660072761E /* CustomAlertView.swift */,
+				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
+				3DF2E05F243E4A3400291FEB /* ButtonView.swift */,
+			);
+			path = SharedComponentViews;
 			sourceTree = "<group>";
 		};
 		3DA5CBD3242E926C00DEB805 /* UserInfoView */ = {
@@ -200,14 +218,12 @@
 		3DE95ED0240464980038892B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3DCA1EBB243E486A002B8241 /* SearchView */,
-				3DA5CBD3242E926C00DEB805 /* UserInfoView */,
-				3D1AD9A52425775800B10FC2 /* FollowerListView */,
 				3D89BFF624045FC70005A3C4 /* ContentView.swift */,
-				3DE95EDB240466FF0038892B /* FavouritesView.swift */,
-				3D892386240ED1660072761E /* CustomAlertView.swift */,
-				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
-				3DF2E05F243E4A3400291FEB /* ButtonView.swift */,
+				3DCA1EBB243E486A002B8241 /* SearchView */,
+				3D1AD9A52425775800B10FC2 /* FollowerListView */,
+				3DA5CBD3242E926C00DEB805 /* UserInfoView */,
+				3DA44228243F77B4008A1A39 /* FavouritesView */,
+				3DA44229243F77E5008A1A39 /* SharedComponentViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";

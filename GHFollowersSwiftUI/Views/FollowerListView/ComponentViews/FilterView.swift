@@ -35,10 +35,8 @@ struct FilterView: View {
                             self.navigationTitleHidden = true
                             self.showingCancelButton = true
                         }
-                        
-                    }
+                }
             )
-            
             if showingCancelButton {
                 Button(action: {
                     withAnimation {

@@ -9,9 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var userName = ""
-    
+        
     var body: some View {
         TabView {
             SearchView()
