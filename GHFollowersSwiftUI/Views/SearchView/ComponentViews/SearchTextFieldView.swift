@@ -13,18 +13,14 @@ struct SearchTextFieldView: View {
     @Binding var username: String
     
     var body: some View {
-        TextField("Enter a username", text: $username)
-        .padding(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.secondary, lineWidth: 2)
-        )
-        .padding()
+        TextField("Enter a username", text: $username).font(Font.system(size: 22))
+            .frame(height: 50)
+        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.systemGray4), lineWidth: 2))
         .multilineTextAlignment(TextAlignment.center)
         .disableAutocorrection(true)
-        .font(.title)
-        .padding(.horizontal, 40)
-        .padding(.top, 40)    }
+        .padding(.horizontal, 50)
+        .padding(.top, 48)
+    }
 }
 
 struct SearchTextFieldView_Previews: PreviewProvider {

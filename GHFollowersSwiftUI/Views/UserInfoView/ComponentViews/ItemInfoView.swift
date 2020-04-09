@@ -22,7 +22,6 @@ struct ItemInfoView: View {
             Rectangle()
                 .foregroundColor(Color(UIColor.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 18))
-                .frame(height: 140)
             VStack {
                 HStack {
                     CountView(image: Image(systemName: itemInfoType == .repos ? "folder" : "person.2"), countType: itemInfoType == .repos ? "Public Repos" : "Followers", count: itemInfoType == .repos ? user.publicRepos : user.followers)
