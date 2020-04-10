@@ -23,6 +23,10 @@ struct FollowerListView: View {
     @State private var showingUserInfoView = false
     @State private var selectedUser = ""
     
+    @State private var reloadPageWithNewUser = false
+    @State private var newUserName: String?
+
+    
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
             return followers.chunked(into: 3)
@@ -52,7 +56,7 @@ struct FollowerListView: View {
                                     FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                                 }
                                 .buttonStyle(PlainButtonStyle())
-                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser) }
+                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingModalError, searchError: self.$error) }
                             }
                             // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
                             if !self.followersChunked.isEmpty && row.count < 3 {
@@ -80,13 +84,13 @@ struct FollowerListView: View {
             }
         }
         .navigationBarHidden(self.hideNavBar)
-        .navigationBarTitle("\(self.username)", displayMode: .large)
+        .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
         .onAppear(perform: self.fetchFollowers)
     }
     
     func fetchFollowers() {
         self.loadingData = true
-        NetworkManager.shared.getFollowers(for: username, page: page) { result in
+        NetworkManager.shared.getFollowers(for: self.newUserName == nil ? self.username : self.newUserName!, page: page) { result in
             DispatchQueue.main.async { self.loadingData = false }
             switch result {
             case .success(let followers):

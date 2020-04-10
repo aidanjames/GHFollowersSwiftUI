@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aidan Pendlebury. All rights reserved.
 //
 
+import SafariServices
 import SwiftUI
 
 struct UserInfoView: View {
@@ -15,6 +16,18 @@ struct UserInfoView: View {
     @State private var showingError = false
     @State private var error: String?
     
+    @State private var showingSafari = false
+    @State private var url: URL?
+    
+    @Binding var newUsername: String?
+    @Binding var searchText: String
+    @Binding var followers: [Follower]
+    @Binding var loadingData: Bool
+    @Binding var moreFollowersAvailable: Bool
+    @Binding var showingEmptyStateView: Bool
+    @Binding var showingModalError: Bool
+    @Binding var searchError: String
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -23,18 +36,31 @@ struct UserInfoView: View {
                 VStack {
                     if user != nil {
                         HeaderInfoView(user: user!)
-                        ItemInfoView(user: user!, itemInfoType: .repos)
-                        ItemInfoView(user: user!, itemInfoType: .followers)
+                        ItemInfoView(user: user!, itemInfoType: .repos) {
+                            print("Hopefully this is working. I just pressed the repos button.")
+                            guard self.url != nil else { return }
+                            self.showingSafari.toggle()
+                        }
+                        .sheet(isPresented: $showingSafari) {
+                            SafariView(url: self.url!)
+                        }
+                        ItemInfoView(user: user!, itemInfoType: .followers) {
+                            self.presentationMode.wrappedValue.dismiss()
+                            self.newUsername = self.username
+                            self.searchText = ""
+                            self.moreFollowersAvailable = true
+                            self.fetchFollowers()
+                        }
                         Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
                     }
                     Spacer()
                 }
                 .onAppear(perform: fetchUserInfo)
-                    .navigationBarTitle(Text(""), displayMode: .inline)
-                    .navigationBarItems(trailing:
-                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                            Text("Done").foregroundColor(.green)
-                        }
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                .navigationBarItems(trailing:
+                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                        Text("Done").foregroundColor(.green)
+                    }
                 )
                 
             }
@@ -50,9 +76,35 @@ struct UserInfoView: View {
             switch result {
             case .success(let user):
                 self.user = user
+                // set url
+                guard let url = URL(string: user.htmlUrl) else {
+                    self.error = "The url attached to this user is invalid."
+                    self.showingError.toggle()
+                    return
+                }
+                self.url = url
             case .failure(let error):
                 self.error = error.rawValue
                 self.showingError = true
+            }
+        }
+        
+    }
+    
+    
+    func fetchFollowers() {
+        self.loadingData = true
+        NetworkManager.shared.getFollowers(for: self.newUsername!, page: 1) { result in
+            DispatchQueue.main.async { self.loadingData = false }
+            switch result {
+            case .success(let followers):
+                if followers.count < 100 { self.moreFollowersAvailable = false }
+                self.followers = followers
+                if self.followers.isEmpty { self.showingEmptyStateView = true }
+                
+            case .failure(let error):
+                self.searchError = error.rawValue
+                self.showingModalError = true
             }
         }
         
@@ -62,6 +114,6 @@ struct UserInfoView: View {
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let username = "aidanjames"
-        return UserInfoView(username: username)
+        return UserInfoView(username: username, newUsername: .constant(nil), searchText: .constant(""), followers: .constant([]), loadingData: .constant(false), moreFollowersAvailable: .constant(false), showingEmptyStateView: .constant(false), showingModalError: .constant(false), searchError: .constant(""))
     }
 }

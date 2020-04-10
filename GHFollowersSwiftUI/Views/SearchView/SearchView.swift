@@ -20,12 +20,15 @@ struct SearchView: View {
                 SearchTextFieldView(username: $username)
                 Spacer()
                 NavigationLink(destination: FollowerListView(username: username), tag: 1, selection: $action) { EmptyView() }
-                ButtonView(color: .green, text: "Get Followers") {
+                
+                Button(action: {
                     guard !self.username.isEmpty else { return }
                     self.action = 1
+                }) {
+                    ButtonView(color: .green, text: "Get Followers")
+                    .padding(.horizontal, 50)
+                    .padding(.bottom, 50)
                 }
-                .padding(.horizontal, 50)
-                .padding(.bottom, 50)
             }
             .navigationBarTitle("Search", displayMode: .large)
             .navigationBarHidden(true)

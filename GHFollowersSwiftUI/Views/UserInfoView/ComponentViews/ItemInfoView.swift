@@ -16,6 +16,7 @@ struct ItemInfoView: View {
     
     var user: User
     var itemInfoType: ItemInfoType
+    var action: () -> Void
     
     var body: some View {
         ZStack {
@@ -29,9 +30,10 @@ struct ItemInfoView: View {
                     CountView(image: Image(systemName: itemInfoType == .repos ? "text.alignleft" : "heart"), countType: itemInfoType == .repos ? "Public Gists" : "Following", count: itemInfoType == .repos ? user.publicGists : user.following)
                 }.padding(.horizontal, 20).padding(.top, 20)
                 Spacer()
-                ButtonView(color: itemInfoType == .repos ? .purple : .green, text: itemInfoType == .repos ? "GitHub Profile" : "Get Followers") {
-                    print("This works")
-                }.padding(.bottom, 20).padding(.horizontal, 20)
+                Button(action: action) {
+                    ButtonView(color: itemInfoType == .repos ? .purple : .green, text: itemInfoType == .repos ? "GitHub Profile" : "Get Followers")
+                        .padding(.bottom, 20).padding(.horizontal, 20)
+                }
             }
         }
         .frame(height: 140)
@@ -44,8 +46,8 @@ struct ItemInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let user = User(login: "aidanjames", avatarUrl: "", name: "Aidan Pendlebury", location: "London", bio: "I'm just a guy, standing in front of nothing.", publicRepos: 8, publicGists: 7, htmlUrl: "", following: 2, followers: 54, createdAt: "")
         return VStack {
-            ItemInfoView(user: user, itemInfoType: .repos)
-            ItemInfoView(user: user, itemInfoType: .followers)
+            ItemInfoView(user: user, itemInfoType: .repos) { }
+            ItemInfoView(user: user, itemInfoType: .followers) { }
         }
     }
 }

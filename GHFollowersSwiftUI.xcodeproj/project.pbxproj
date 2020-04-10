@@ -11,6 +11,8 @@
 		3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */; };
 		3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AD9A7242579C500B10FC2 /* FilterView.swift */; };
 		3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */; };
+		3D5509762440BBC100AD99AF /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5509752440BBC100AD99AF /* ButtonView.swift */; };
+		3D5509782440BF5F00AD99AF /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5509772440BF5F00AD99AF /* SafariView.swift */; };
 		3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7703B0243291A300588C40 /* HeaderInfoView.swift */; };
 		3D7B0BAD2436619C0070AC45 /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B0BAC2436619C0070AC45 /* CountView.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
@@ -35,7 +37,6 @@
 		3DE95ED7240464D20038892B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED5240464D20038892B /* User.swift */; };
 		3DE95EDA240466720038892B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED9240466720038892B /* SearchView.swift */; };
 		3DE95EDC240466FF0038892B /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95EDB240466FF0038892B /* FavouritesView.swift */; };
-		3DF2E060243E4A3400291FEB /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF2E05F243E4A3400291FEB /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		3D1AD9A7242579C500B10FC2 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3D1D1FD82405BE2D003EF1D9 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		3D5509752440BBC100AD99AF /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		3D5509772440BF5F00AD99AF /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		3D7703B0243291A300588C40 /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
 		3D7B0BAC2436619C0070AC45 /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
@@ -69,7 +72,6 @@
 		3DE95ED5240464D20038892B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../GHFollowers/GHFollowers/Model/User.swift; sourceTree = "<group>"; };
 		3DE95ED9240466720038892B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3DE95EDB240466FF0038892B /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
-		3DF2E05F243E4A3400291FEB /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +186,7 @@
 			children = (
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
 				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
-				3DF2E05F243E4A3400291FEB /* ButtonView.swift */,
+				3D5509752440BBC100AD99AF /* ButtonView.swift */,
 			);
 			path = SharedComponentViews;
 			sourceTree = "<group>";
@@ -224,6 +226,7 @@
 				3DA5CBD3242E926C00DEB805 /* UserInfoView */,
 				3DA44228243F77B4008A1A39 /* FavouritesView */,
 				3DA44229243F77E5008A1A39 /* SharedComponentViews */,
+				3D5509772440BF5F00AD99AF /* SafariView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */,
+				3D5509782440BF5F00AD99AF /* SafariView.swift in Sources */,
 				3D7B0BAD2436619C0070AC45 /* CountView.swift in Sources */,
 				3DC51FA7243BBEB200EB768A /* Date+Ext.swift in Sources */,
 				3D892387240ED1660072761E /* CustomAlertView.swift in Sources */,
@@ -335,6 +339,7 @@
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
 				3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */,
+				3D5509762440BBC100AD99AF /* ButtonView.swift in Sources */,
 				3DBFC93B243D04A300692CD0 /* ItemInfoView.swift in Sources */,
 				3D0067C92422B9F300FEAE8A /* ActivityIndicator.swift in Sources */,
 				3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */,
@@ -349,7 +354,6 @@
 				3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */,
 				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,
 				3DCA1EBE243E48A7002B8241 /* SearchTextFieldView.swift in Sources */,
-				3DF2E060243E4A3400291FEB /* ButtonView.swift in Sources */,
 				3DE95EDC240466FF0038892B /* FavouritesView.swift in Sources */,
 				3DA5CBD5242E928600DEB805 /* UserInfoView.swift in Sources */,
 				3D89BFF724045FC70005A3C4 /* ContentView.swift in Sources */,
