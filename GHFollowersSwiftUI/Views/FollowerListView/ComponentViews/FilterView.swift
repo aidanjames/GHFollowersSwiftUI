@@ -12,7 +12,7 @@ struct FilterView: View {
     
     @Binding var searchText: String
     @Binding var navigationTitleHidden: Bool
-    @State private var showingCancelButton = false
+    @Binding var showingCancelButton: Bool
     
     var body: some View {
         HStack(alignment: .center) {
@@ -57,6 +57,6 @@ struct FilterView: View {
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterView(searchText: .constant(""), navigationTitleHidden: .constant(true))
+        FilterView(searchText: .constant(""), navigationTitleHidden: .constant(true), showingCancelButton: .constant(false))
     }
 }

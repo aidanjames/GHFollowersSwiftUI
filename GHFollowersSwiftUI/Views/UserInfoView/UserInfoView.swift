@@ -16,9 +16,11 @@ struct UserInfoView: View {
     @State private var showingError = false
     @State private var error: String?
     
+    // Variables for when the user selects the 'GitHub profile' button
     @State private var showingSafari = false
     @State private var url: URL?
     
+    // Variables for when the user selects 'Get followers' button
     @Binding var newUsername: String?
     @Binding var searchText: String
     @Binding var followers: [Follower]
@@ -27,6 +29,8 @@ struct UserInfoView: View {
     @Binding var showingEmptyStateView: Bool
     @Binding var showingModalError: Bool
     @Binding var searchError: String
+    @Binding var hideNavBar: Bool
+    @Binding var showingCancelButton: Bool
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -37,7 +41,6 @@ struct UserInfoView: View {
                     if user != nil {
                         HeaderInfoView(user: user!)
                         ItemInfoView(user: user!, itemInfoType: .repos) {
-                            print("Hopefully this is working. I just pressed the repos button.")
                             guard self.url != nil else { return }
                             self.showingSafari.toggle()
                         }
@@ -47,8 +50,8 @@ struct UserInfoView: View {
                         ItemInfoView(user: user!, itemInfoType: .followers) {
                             self.presentationMode.wrappedValue.dismiss()
                             self.newUsername = self.username
-                            self.searchText = ""
-                            self.moreFollowersAvailable = true
+//                            self.searchText = ""
+//                            self.moreFollowersAvailable = true
                             self.fetchFollowers()
                         }
                         Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
@@ -62,7 +65,6 @@ struct UserInfoView: View {
                         Text("Done").foregroundColor(.green)
                     }
                 )
-                
             }
             if showingError {
                 CustomAlertView(titleLabel: "Something went wrong", bodyLabel: error ?? "Unknown error", callToActionButton: "Ok", showingModal: $showingError)
@@ -71,7 +73,6 @@ struct UserInfoView: View {
     }
     
     func fetchUserInfo() {
-        
         NetworkManager.shared.getUserInfo(for: username) { result in
             switch result {
             case .success(let user):
@@ -88,9 +89,7 @@ struct UserInfoView: View {
                 self.showingError = true
             }
         }
-        
     }
-    
     
     func fetchFollowers() {
         self.loadingData = true
@@ -98,6 +97,14 @@ struct UserInfoView: View {
             DispatchQueue.main.async { self.loadingData = false }
             switch result {
             case .success(let followers):
+                DispatchQueue.main.async {
+                    UIApplication.shared.endEditing()
+                    self.showingCancelButton = false
+                    self.hideNavBar = false
+                    self.searchText = ""
+                    self.moreFollowersAvailable = true
+                }
+                
                 if followers.count < 100 { self.moreFollowersAvailable = false }
                 self.followers = followers
                 if self.followers.isEmpty { self.showingEmptyStateView = true }
@@ -107,13 +114,12 @@ struct UserInfoView: View {
                 self.showingModalError = true
             }
         }
-        
     }
 }
 
 struct UserInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let username = "aidanjames"
-        return UserInfoView(username: username, newUsername: .constant(nil), searchText: .constant(""), followers: .constant([]), loadingData: .constant(false), moreFollowersAvailable: .constant(false), showingEmptyStateView: .constant(false), showingModalError: .constant(false), searchError: .constant(""))
+        return UserInfoView(username: username, newUsername: .constant(nil), searchText: .constant(""), followers: .constant([]), loadingData: .constant(false), moreFollowersAvailable: .constant(false), showingEmptyStateView: .constant(false), showingModalError: .constant(false), searchError: .constant(""), hideNavBar: .constant(false), showingCancelButton: .constant(false))
     }
 }

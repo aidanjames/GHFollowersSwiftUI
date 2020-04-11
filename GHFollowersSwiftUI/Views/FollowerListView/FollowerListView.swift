@@ -25,7 +25,9 @@ struct FollowerListView: View {
     
     @State private var reloadPageWithNewUser = false
     @State private var newUserName: String?
-
+    
+    @State private var showingCancelButton: Bool = false
+    
     
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
@@ -45,7 +47,7 @@ struct FollowerListView: View {
         ZStack {
             List {
                 if followersChunked.count > 0 || !searchText.isEmpty {
-                    FilterView(searchText: $searchText, navigationTitleHidden: $hideNavBar)
+                    FilterView(searchText: $searchText, navigationTitleHidden: $hideNavBar, showingCancelButton: $showingCancelButton)
                     ForEach(followersChunked, id: \.self) { row in
                         HStack(spacing: 20) {
                             ForEach(row, id: \.self) { follower in
@@ -56,7 +58,7 @@ struct FollowerListView: View {
                                     FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                                 }
                                 .buttonStyle(PlainButtonStyle())
-                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingModalError, searchError: self.$error) }
+                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingModalError, searchError: self.$error, hideNavBar: self.$hideNavBar, showingCancelButton: self.$showingCancelButton) }
                             }
                             // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
                             if !self.followersChunked.isEmpty && row.count < 3 {
