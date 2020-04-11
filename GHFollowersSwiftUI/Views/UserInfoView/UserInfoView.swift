@@ -14,7 +14,9 @@ struct UserInfoView: View {
     var username: String
     @State private var user: User?
     @State private var showingError = false
+    @State private var errorTitle = "Something went wrong"
     @State private var error: String?
+    @State private var errorButtonText = "Ok"
     
     // Variables for when the user selects the 'GitHub profile' button
     @State private var showingSafari = false
@@ -45,13 +47,17 @@ struct UserInfoView: View {
                             self.showingSafari.toggle()
                         }
                         .sheet(isPresented: $showingSafari) {
-                            SafariView(url: self.url!)
+                            SafariView(url: self.url!).edgesIgnoringSafeArea(.all)
                         }
                         ItemInfoView(user: user!, itemInfoType: .followers) {
+                            guard self.user?.followers != 0 else {
+                                self.errorTitle = "No followers"
+                                self.error = "This user has no followers. What a shame ☹️."
+                                self.showingError.toggle()
+                                return
+                            }
                             self.presentationMode.wrappedValue.dismiss()
                             self.newUsername = self.username
-//                            self.searchText = ""
-//                            self.moreFollowersAvailable = true
                             self.fetchFollowers()
                         }
                         Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
@@ -67,7 +73,7 @@ struct UserInfoView: View {
                 )
             }
             if showingError {
-                CustomAlertView(titleLabel: "Something went wrong", bodyLabel: error ?? "Unknown error", callToActionButton: "Ok", showingModal: $showingError)
+                CustomAlertView(titleLabel: errorTitle, bodyLabel: error ?? "Unknown error", callToActionButton: errorButtonText, showingModal: $showingError)
             }
         }
     }

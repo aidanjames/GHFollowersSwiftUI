@@ -40,6 +40,7 @@ struct FilterView: View {
             if showingCancelButton {
                 Button(action: {
                     withAnimation {
+                        UIApplication.shared.endEditing()
                         self.searchText = ""
                         self.navigationTitleHidden = false
                         self.showingCancelButton = false

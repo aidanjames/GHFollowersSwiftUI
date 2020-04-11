@@ -22,13 +22,11 @@ struct FollowerListView: View {
     @State private var showingEmptyStateView = false
     @State private var showingUserInfoView = false
     @State private var selectedUser = ""
-    
     @State private var reloadPageWithNewUser = false
     @State private var newUserName: String?
-    
     @State private var showingCancelButton: Bool = false
     
-    
+    // To break the users down into subsets of 3 to help emulate a collection view
     var followersChunked: [[Follower]] {
         if searchText.isEmpty {
             return followers.chunked(into: 3)
