@@ -19,7 +19,7 @@ struct CustomAlertView: View {
     
     var body: some View {
         ZStack {
-            Color.secondary.opacity(0.4).edgesIgnoringSafeArea(.all)
+            Color.secondary.opacity(0.8).edgesIgnoringSafeArea(.all)
             VStack {
                 Text(titleLabel)
                     .font(.headline)

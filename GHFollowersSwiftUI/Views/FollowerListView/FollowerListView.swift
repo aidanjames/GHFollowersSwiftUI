@@ -85,6 +85,13 @@ struct FollowerListView: View {
         }
         .navigationBarHidden(self.hideNavBar)
         .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
+    .navigationBarItems(trailing:
+        Button(action: { print("This") }) {
+            
+            Image(systemName: "plus").font(Font.system(size: 22))
+            .padding()
+        }
+            )
         .onAppear(perform: self.fetchFollowers)
     }
     
