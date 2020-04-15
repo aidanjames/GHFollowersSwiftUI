@@ -9,8 +9,28 @@
 import SwiftUI
 
 struct FavouritesView: View {
+    
+    @State private var favourites = [Follower]()
+    
     var body: some View {
-        Text("TBC")
+        NavigationView {
+            List(favourites, id: \.self) { follower in
+                Text(follower.login)
+            }
+            .onAppear(perform: self.retrieveFavourites)
+        }
+    }
+    
+    func retrieveFavourites() {
+        PersistenceManager.retreiveFavourites { result in
+            switch result {
+            case .success(let favourites):
+                self.favourites = favourites
+            case .failure(let error):
+                // add error handling
+                print(error.rawValue)
+            }
+        }
     }
 }
 

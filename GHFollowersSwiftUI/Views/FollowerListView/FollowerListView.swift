@@ -13,8 +13,10 @@ struct FollowerListView: View {
     var username: String
     @State private var hideNavBar = true
     @State private var followers = [Follower]()
-    @State private var error = ""
-    @State private var showingModalError = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var callToActionButton = ""
+    @State private var showingCustomAlert = false
     @State private var searchText = ""
     @State private var moreFollowersAvailable = true
     @State private var page = 1
@@ -56,7 +58,7 @@ struct FollowerListView: View {
                                     FollowerCellView(username: follower.login, imageURL: follower.avatarUrl)
                                 }
                                 .buttonStyle(PlainButtonStyle())
-                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingModalError, searchError: self.$error, hideNavBar: self.$hideNavBar, showingCancelButton: self.$showingCancelButton) }
+                                .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingCustomAlert, searchError: self.$alertMessage, hideNavBar: self.$hideNavBar, showingCancelButton: self.$showingCancelButton) }
                             }
                             // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
                             if !self.followersChunked.isEmpty && row.count < 3 {
@@ -79,20 +81,19 @@ struct FollowerListView: View {
                 ActivityIndicatorView()
             } else if showingEmptyStateView && !hideNavBar {
                 EmptyStateView()
-            } else if showingModalError {
-                CustomAlertView(bodyLabel: self.error, callToActionButton: "Ok", showingModal: self.$showingModalError).edgesIgnoringSafeArea(.all)
+            } else if showingCustomAlert {
+                CustomAlertView(titleLabel: self.alertTitle, bodyLabel: self.alertMessage, callToActionButton: self.callToActionButton, showingModal: self.$showingCustomAlert).edgesIgnoringSafeArea(.all)
             }
         }
         .navigationBarHidden(self.hideNavBar)
         .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
-    .navigationBarItems(trailing:
-        Button(action: { print("This") }) {
-            
-            Image(systemName: "plus").font(Font.system(size: 22))
-            .padding()
-        }
-            )
-        .onAppear(perform: self.fetchFollowers)
+        .navigationBarItems(trailing:
+            Button(action: self.addFavourite) {
+                Image(systemName: "plus").font(Font.system(size: 22))
+                    .padding()
+            }
+        )
+            .onAppear(perform: self.fetchFollowers)
     }
     
     func fetchFollowers() {
@@ -105,8 +106,10 @@ struct FollowerListView: View {
                 self.followers.append(contentsOf: followers)
                 if self.followers.isEmpty { self.showingEmptyStateView = true }
             case .failure(let error):
-                self.error = error.rawValue
-                self.showingModalError = true
+                self.alertTitle = "Bad stuff happened"
+                self.alertMessage = error.rawValue
+                self.callToActionButton = "Ok"
+                self.showingCustomAlert = true
             }                
         }
         
@@ -114,9 +117,40 @@ struct FollowerListView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.hideNavBar  = false
         }
-        
     }
-
+    
+    func addFavourite() {
+        
+        let user = newUserName == nil ? username : newUserName!
+        
+        NetworkManager.shared.getUserInfo(for: user) { result in
+            switch result {
+            case .success(let user):
+                let favourite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                PersistenceManager.updateWith(favourite: favourite, actionType: .add) { error in
+                    guard let error = error else {
+                        // We've saved the user
+                        self.alertTitle = "Success!"
+                        self.alertMessage = "You have successfully favourited this user 🎉"
+                        self.callToActionButton = "Hooray!"
+                        self.showingCustomAlert.toggle()
+                        return
+                    }
+                    self.alertTitle = "Bad stuff happened"
+                    self.alertMessage = error.rawValue
+                    self.callToActionButton = "Ok"
+                    self.showingCustomAlert.toggle()
+                }
+            case .failure(let error):
+                self.alertTitle = "Bad stuff happened"
+                self.alertMessage = error.rawValue
+                self.callToActionButton = "Ok"
+                self.showingCustomAlert.toggle()
+            }
+        }
+    }
+    
+    
 }
 
 struct FollowerListView_Previews: PreviewProvider {
