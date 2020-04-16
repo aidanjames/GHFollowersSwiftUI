@@ -62,7 +62,7 @@ enum PersistenceManager {
             let followers = try decoder.decode([Follower].self, from: favouritesData)
             completed(.success(followers))
         } catch {
-            completed(.failure(.unableToFavourite))
+            completed(.failure(.unableToDecode))
         }
     }
     

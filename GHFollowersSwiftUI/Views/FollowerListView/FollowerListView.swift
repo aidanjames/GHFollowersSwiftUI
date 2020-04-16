@@ -13,10 +13,13 @@ struct FollowerListView: View {
     var username: String
     @State private var hideNavBar = true
     @State private var followers = [Follower]()
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var callToActionButton = ""
-    @State private var showingCustomAlert = false
+    
+    // Alert bindings - I have to bind these to the TabView (ContentView) so an alert covers the whole screen including the tab bar.
+    @Binding var alertTitle: String
+    @Binding var alertMessage: String
+    @Binding var callToActionButton: String
+    @Binding var showingCustomAlert: Bool
+    
     @State private var searchText = ""
     @State private var moreFollowersAvailable = true
     @State private var page = 1
@@ -37,11 +40,7 @@ struct FollowerListView: View {
             return filteredFollowers.chunked(into: 3)
         }
     }
-    
-    init(username: String) {
-        self.username = username
-        UITableView.appearance().separatorStyle = .none // Because there's no easy way to hide list separators
-    }
+
     
     var body: some View {
         ZStack {
@@ -78,8 +77,6 @@ struct FollowerListView: View {
                 ActivityIndicatorView()
             } else if showingEmptyStateView && !hideNavBar {
                 EmptyStateView()
-            } else if showingCustomAlert {
-                CustomAlertView(titleLabel: self.alertTitle, bodyLabel: self.alertMessage, callToActionButton: self.callToActionButton, showingModal: self.$showingCustomAlert).edgesIgnoringSafeArea(.all)
             }
         }
         .navigationBarHidden(self.hideNavBar)
@@ -94,6 +91,7 @@ struct FollowerListView: View {
     }
     
     func fetchFollowers() {
+        UITableView.appearance().separatorStyle = .none // This removes the divider lines in the list
         self.loadingData = true
         NetworkManager.shared.getFollowers(for: self.newUserName == nil ? self.username : self.newUserName!, page: page) { result in
             DispatchQueue.main.async { self.loadingData = false }
@@ -151,7 +149,8 @@ struct FollowerListView: View {
 
 struct FollowerListView_Previews: PreviewProvider {
     static var previews: some View {
-        return FollowerListView(username: "SAllen0400")
+//        return FollowerListView(username: "SAllen0400")
+        return FollowerListView(username: "SAllen0400", alertTitle: .constant(""), alertMessage: .constant(""), callToActionButton: .constant(""), showingCustomAlert: .constant(false))
     }
 }
 

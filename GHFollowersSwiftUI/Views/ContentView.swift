@@ -9,20 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showingAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var callToActionButton = ""
         
     var body: some View {
-        TabView {
-            SearchView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass").font(Font.system(size: 25))
-                    Text("Search")
+        ZStack {
+            TabView {
+                SearchView(alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingAlert)
+                    .tabItem {
+                        Image(systemName: "magnifyingglass").font(Font.system(size: 25))
+                        Text("Search")
+                }
+                FavouritesView(alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingAlert)
+                    .tabItem {
+                        Image(systemName: "star.fill").font(Font.system(size: 25))
+                        Text("Favourites")
+                }
             }
-            FavouritesView()
-                .tabItem {
-                    Image(systemName: "star.fill").font(Font.system(size: 25))
-                    Text("Favourites")
+            .accentColor(.green)
+            if showingAlert {
+                CustomAlertView(titleLabel: self.alertTitle, bodyLabel: self.alertMessage, callToActionButton: self.callToActionButton, showingModal: self.$showingAlert)
             }
-        }.accentColor(.green)
+        }
+            
     }
 }
 
