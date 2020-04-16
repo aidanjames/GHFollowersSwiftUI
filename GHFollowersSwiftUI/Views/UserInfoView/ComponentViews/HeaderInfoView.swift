@@ -10,18 +10,13 @@ import SwiftUI
 
 struct HeaderInfoView: View {
     
-    @State private var image: Image = Image("avatar-placeholder")
-    let cache = NetworkManager.shared.cache
-    
     var user: User
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                image
-                    .resizable()
+                AvatarImageView(avatarURL: self.user.avatarUrl)
                     .frame(width: 90, height: 90)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     .padding(.leading, 20)
                     .padding(.top, 20)
                 VStack(alignment: .leading, spacing: 5) {
@@ -38,34 +33,10 @@ struct HeaderInfoView: View {
                 .lineLimit(2)
                 .padding(.horizontal, 20)
                 .padding(.top)
-        }.onAppear {
-            self.downloadImage(from: self.user.avatarUrl)
         }
+        
     }
     
-    func downloadImage(from urlString: String) {
-        
-        let cacheKey = NSString(string: urlString)
-        if let image = cache.object(forKey: cacheKey) {
-            self.image = Image(uiImage: image)
-            return
-        }
-        
-        guard let url = URL(string: urlString) else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil { return }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return }
-            guard let data = data else { return }
-            
-            guard let image = UIImage(data: data) else { return }
-            self.cache.setObject(image, forKey: cacheKey)
-            DispatchQueue.main.async {
-                self.image = Image(uiImage: image)
-            }
-        }
-        task.resume()
-    }
 }
 
 struct HeaderInfoView_Previews: PreviewProvider {

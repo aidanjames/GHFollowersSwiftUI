@@ -18,6 +18,7 @@ struct FavouritesView: View {
                 Text(follower.login)
             }
             .onAppear(perform: self.retrieveFavourites)
+            .navigationBarTitle("Favourites")
         }
     }
     

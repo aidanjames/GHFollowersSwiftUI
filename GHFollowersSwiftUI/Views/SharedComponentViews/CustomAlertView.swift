@@ -19,7 +19,7 @@ struct CustomAlertView: View {
     
     var body: some View {
         ZStack {
-            Color.secondary.opacity(0.8).edgesIgnoringSafeArea(.all)
+            Color.secondary.edgesIgnoringSafeArea(.all) // Don't need the opacity modifier when the colour is 'secondary'
             VStack {
                 Text(titleLabel)
                     .font(.headline)

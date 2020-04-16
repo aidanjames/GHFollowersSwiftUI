@@ -60,14 +60,11 @@ struct FollowerListView: View {
                                 .buttonStyle(PlainButtonStyle())
                                 .sheet(isPresented: self.$showingUserInfoView) { UserInfoView(username: self.selectedUser, newUsername: self.$newUserName, searchText: self.$searchText, followers: self.$followers, loadingData: self.$loadingData, moreFollowersAvailable: self.$moreFollowersAvailable, showingEmptyStateView: self.$showingEmptyStateView, showingModalError: self.$showingCustomAlert, searchError: self.$alertMessage, hideNavBar: self.$hideNavBar, showingCancelButton: self.$showingCancelButton) }
                             }
-                            // Below is a hack to prevent a row with only one or two followers taking up all the space. This basically just presents blank FollowerCellViews. Yuck.
-                            if !self.followersChunked.isEmpty && row.count < 3 {
-                                ForEach(1...(3 - row.count), id: \.self) { _ in
-                                    FollowerCellView()
-                                }
+                            // Below is a hack to prevent a row with less than 3 followers taking up unequal space. Yuck.
+                            if row.count < 3 {
+                                ForEach(1...(3 - row.count), id: \.self) { _ in Circle().opacity(0) }
                             }
-                        }
-                        .padding(.horizontal, 12)
+                        }.padding(.horizontal, 12)
                     }
                     if moreFollowersAvailable && searchText.isEmpty { // Hack so we know we've scrolled to the bottom of the page so we can fetch the next page.
                         Circle().opacity(0).onAppear() {
@@ -129,7 +126,6 @@ struct FollowerListView: View {
                 let favourite = Follower(login: user.login, avatarUrl: user.avatarUrl)
                 PersistenceManager.updateWith(favourite: favourite, actionType: .add) { error in
                     guard let error = error else {
-                        // We've saved the user
                         self.alertTitle = "Success!"
                         self.alertMessage = "You have successfully favourited this user 🎉"
                         self.callToActionButton = "Hooray!"
