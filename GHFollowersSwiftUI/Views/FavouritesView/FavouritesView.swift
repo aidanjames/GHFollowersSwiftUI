@@ -12,7 +12,7 @@ struct FavouritesView: View {
     
     @State private var favourites = [Follower]()
     
-    // Alert bindings
+    // Alert bindings (These have to bind back to the TabView so the alert covers the whole screen including the tab bar).
     @Binding var alertTitle: String
     @Binding var alertMessage: String
     @Binding var callToActionButton: String
@@ -36,6 +36,7 @@ struct FavouritesView: View {
     }
     
     func retrieveFavourites() {
+        UITableView.appearance().separatorStyle = .singleLine // Hack as there's a bug where the divider lines disappear randomly
         PersistenceManager.retreiveFavourites { result in
             switch result {
             case .success(let favourites):

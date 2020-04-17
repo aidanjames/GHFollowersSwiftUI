@@ -125,6 +125,7 @@
 				3D7703B0243291A300588C40 /* HeaderInfoView.swift */,
 				3D7B0BAC2436619C0070AC45 /* CountView.swift */,
 				3DBFC93A243D04A300692CD0 /* ItemInfoView.swift */,
+				3D5509772440BF5F00AD99AF /* SafariView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 				3DA5CBD3242E926C00DEB805 /* UserInfoView */,
 				3DA44228243F77B4008A1A39 /* FavouritesView */,
 				3DA44229243F77E5008A1A39 /* SharedComponentViews */,
-				3D5509772440BF5F00AD99AF /* SafariView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

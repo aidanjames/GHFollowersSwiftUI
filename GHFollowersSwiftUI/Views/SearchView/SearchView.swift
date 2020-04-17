@@ -13,6 +13,10 @@ struct SearchView: View {
     @State private var username = ""
     @State private var action: Int? = 0
     
+    var getFollowersButtonDisabled: Bool {
+        return username.isEmpty
+    }
+    
     // Alert bindings. They're not set on this screen but need to be passed to the FollowerListView so if an alert appears is covers the whole TabView rather than just the FollowerListView.
     @Binding var alertTitle: String
     @Binding var alertMessage: String
@@ -27,19 +31,15 @@ struct SearchView: View {
                     Image("gh-logo").resizable().scaledToFit().frame(width: 200, height: 200).padding(.top, 80)
                     SearchTextFieldView(username: $username)
                     Spacer()
-                    NavigationLink(destination: FollowerListView(username: self.username, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert), tag: 1, selection: $action) { EmptyView() }
-                    Button(action: {
-                        guard !self.username.isEmpty else { return }
-                        self.action = 1
-                    }) {
-                        ButtonView(color: .green, text: "Get Followers").padding(.horizontal, 50).padding(.bottom, 50)
-                    }
+                    NavigationLink(destination: FollowerListView(username: self.username, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
+                            ButtonView(color: .green, text: "Get Followers").padding(.horizontal, 50).padding(.bottom, 50)
+                    }.disabled(getFollowersButtonDisabled) // So they can't navigate to list view they've not entered a username.
                 }
                 .navigationBarTitle("Search", displayMode: .large)
                 .navigationBarHidden(true)
-                .onAppear { self.username = "" } // So we clear the previous entry on return to the page.
+                    .onAppear { self.username = "" } // So we clear the previous entry on return to the page.
             }
-            .onTapGesture { UIApplication.shared.endEditing() } // To dissmiss keyboard but need a ZStack hack for it to work.
+                .onTapGesture { UIApplication.shared.endEditing() } // To dissmiss keyboard but need a ZStack hack for it to work.
         }
     }
     
