@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct EmptyStateView: View {
+    
+    var text: String
+    
     var body: some View {
         VStack {
             Spacer()
-            Text("This user doesn't have any followers. Go follow them 😄.")
+            Text(text)
                 .foregroundColor(.gray)
                 .font(.title)
                 .fontWeight(.bold)
@@ -29,6 +32,6 @@ struct EmptyStateView: View {
 
 struct EmptyStateView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyStateView()
+        EmptyStateView(text: "This user doesn't have any followers. Go follow them 😄.")
     }
 }

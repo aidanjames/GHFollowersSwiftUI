@@ -76,7 +76,7 @@ struct FollowerListView: View {
             if loadingData {
                 ActivityIndicatorView()
             } else if showingEmptyStateView && !hideNavBar {
-                EmptyStateView()
+                EmptyStateView(text: "This user doesn't have any followers. Go follow them 😄.")
             }
         }
         .navigationBarHidden(self.hideNavBar)

@@ -103,7 +103,6 @@
 		3D1AD9A62425777600B10FC2 /* ComponentViews */ = {
 			isa = PBXGroup;
 			children = (
-				3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */,
 				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
 				3D1AD9A7242579C500B10FC2 /* FilterView.swift */,
 				3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */,
@@ -192,6 +191,7 @@
 		3DA44229243F77E5008A1A39 /* SharedComponentViews */ = {
 			isa = PBXGroup;
 			children = (
+				3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */,
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
 				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
 				3D5509752440BBC100AD99AF /* ButtonView.swift */,

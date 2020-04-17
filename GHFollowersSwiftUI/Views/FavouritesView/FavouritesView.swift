@@ -19,19 +19,28 @@ struct FavouritesView: View {
     @Binding var showingCustomAlert: Bool
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                List {
-                    ForEach(favourites, id: \.self) { follower in
-                        NavigationLink(destination: FollowerListView(username: follower.login, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
-                            FavouritesCell(follower: follower)
+        NavigationView {
+            ZStack {
+                if favourites.isEmpty {
+                    Group {
+                        EmptyStateView(text: "No Favourites?\nAdd one on the follower screen.")
+                    }
+                }
+                else {
+                    Group {
+                        List {
+                            ForEach(favourites, id: \.self) { follower in
+                                NavigationLink(destination: FollowerListView(username: follower.login, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
+                                    FavouritesCell(follower: follower)
+                                }
+                            }
+                            .onDelete(perform: removeFavourite)
                         }
                     }
-                    .onDelete(perform: removeFavourite)
                 }
-                .onAppear(perform: self.retrieveFavourites)
-                .navigationBarTitle("Favourites")
             }
+            .onAppear(perform: self.retrieveFavourites)
+            .navigationBarTitle("Favourites")
         }
     }
     
