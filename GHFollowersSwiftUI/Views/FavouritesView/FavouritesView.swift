@@ -11,6 +11,7 @@ import SwiftUI
 struct FavouritesView: View {
     
     @State private var favourites = [Follower]()
+    @State private var showingEmptyStateView = false
     
     // Alert bindings (These have to bind back to the TabView so the alert covers the whole screen including the tab bar).
     @Binding var alertTitle: String
@@ -21,12 +22,11 @@ struct FavouritesView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if favourites.isEmpty {
+                if showingEmptyStateView {
                     Group {
                         EmptyStateView(text: "No Favourites?\nAdd one on the follower screen.")
                     }
-                }
-                else {
+                } else {
                     Group {
                         List {
                             ForEach(favourites, id: \.self) { follower in
@@ -49,6 +49,7 @@ struct FavouritesView: View {
         PersistenceManager.retreiveFavourites { result in
             switch result {
             case .success(let favourites):
+                if favourites.isEmpty { self.showingEmptyStateView = true }
                 self.favourites = favourites
             case .failure(let error):
                 print(error.rawValue)
@@ -72,6 +73,7 @@ struct FavouritesView: View {
                 }
             }
             favourites.remove(atOffsets: offsets)
+            if favourites.isEmpty { self.showingEmptyStateView = true }
         }
     }
 }
