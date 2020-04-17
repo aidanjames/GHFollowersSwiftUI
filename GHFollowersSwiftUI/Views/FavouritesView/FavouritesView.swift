@@ -21,21 +21,17 @@ struct FavouritesView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
+            Group {
                 if showingEmptyStateView {
-                    Group {
-                        EmptyStateView(text: "No Favourites?\nAdd one on the follower screen.")
-                    }
+                    EmptyStateView(text: "No Favourites?\nAdd one on the follower screen.")
                 } else {
-                    Group {
-                        List {
-                            ForEach(favourites, id: \.self) { follower in
-                                NavigationLink(destination: FollowerListView(username: follower.login, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
-                                    FavouritesCell(follower: follower)
-                                }
+                    List {
+                        ForEach(favourites, id: \.self) { follower in
+                            NavigationLink(destination: FollowerListView(username: follower.login, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
+                                FavouritesCell(follower: follower)
                             }
-                            .onDelete(perform: removeFavourite)
                         }
+                        .onDelete(perform: removeFavourite)
                     }
                 }
             }
