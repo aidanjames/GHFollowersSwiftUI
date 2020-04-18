@@ -45,8 +45,13 @@ struct FavouritesView: View {
         PersistenceManager.retreiveFavourites { result in
             switch result {
             case .success(let favourites):
-                if favourites.isEmpty { self.showingEmptyStateView = true }
-                self.favourites = favourites
+                if favourites.isEmpty {
+                    self.showingEmptyStateView = true
+                    
+                } else {
+                    self.favourites = favourites
+                    self.showingEmptyStateView = false
+                }
             case .failure(let error):
                 print(error.rawValue)
                 self.alertTitle = "Something bad happened"
