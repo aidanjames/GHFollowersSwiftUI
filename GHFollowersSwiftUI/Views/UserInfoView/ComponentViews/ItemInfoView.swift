@@ -25,9 +25,9 @@ struct ItemInfoView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 18))
             VStack {
                 HStack {
-                    CountView(image: Image(systemName: itemInfoType == .repos ? "folder" : "person.2"), countType: itemInfoType == .repos ? "Public Repos" : "Followers", count: itemInfoType == .repos ? user.publicRepos : user.followers)
+                    CountView(image: Image(systemName: itemInfoType == .repos ? SFSymbols.repos : SFSymbols.followers), countType: itemInfoType == .repos ? "Public Repos" : "Followers", count: itemInfoType == .repos ? user.publicRepos : user.followers)
                     Spacer()
-                    CountView(image: Image(systemName: itemInfoType == .repos ? "text.alignleft" : "heart"), countType: itemInfoType == .repos ? "Public Gists" : "Following", count: itemInfoType == .repos ? user.publicGists : user.following)
+                    CountView(image: Image(systemName: itemInfoType == .repos ? SFSymbols.gists : SFSymbols.following), countType: itemInfoType == .repos ? "Public Gists" : "Following", count: itemInfoType == .repos ? user.publicGists : user.following)
                 }.padding(.horizontal, 20).padding(.top, 20)
                 Spacer()
                 Button(action: action) {

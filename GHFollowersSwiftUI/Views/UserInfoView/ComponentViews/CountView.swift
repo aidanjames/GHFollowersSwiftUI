@@ -35,10 +35,10 @@ struct CountView: View {
 struct CountView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CountView(image: Image(systemName: "folder"), countType: "Public Repos", count: 3)
-            CountView(image: Image(systemName: "person.2"), countType: "Followers", count: 6)
-            CountView(image: Image(systemName: "heart"), countType: "Following", count: 21)
-            CountView(image: Image(systemName: "text.alignleft"), countType: "Public Gists", count: 0)
+            CountView(image: Image(systemName: SFSymbols.repos), countType: "Public Repos", count: 3)
+            CountView(image: Image(systemName: SFSymbols.followers), countType: "Followers", count: 6)
+            CountView(image: Image(systemName: SFSymbols.following), countType: "Following", count: 21)
+            CountView(image: Image(systemName: SFSymbols.gists), countType: "Public Gists", count: 0)
         }
     }
 }

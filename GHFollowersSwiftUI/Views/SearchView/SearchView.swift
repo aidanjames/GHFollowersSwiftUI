@@ -28,7 +28,7 @@ struct SearchView: View {
             ZStack {
                 Rectangle().opacity(0.0001) // Hack to ensure tap gesture works everywhere on the screen (bug?)
                 VStack {
-                    Image("gh-logo").resizable().scaledToFit().frame(width: 200, height: 200).padding(.top, 80)
+                    Images.ghLogo.resizable().scaledToFit().frame(width: 200, height: 200).padding(.top, DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80)
                     SearchTextFieldView(username: $username)
                     Spacer()
                     NavigationLink(destination: FollowerListView(username: self.username, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {

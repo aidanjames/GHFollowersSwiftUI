@@ -14,12 +14,13 @@ struct SearchTextFieldView: View {
     
     var body: some View {
         TextField("Enter a username", text: $username).font(Font.system(size: 22))
+            .modifier(ClearButton(text: $username))
             .frame(height: 50)
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.systemGray4), lineWidth: 2))
-        .multilineTextAlignment(TextAlignment.center)
-        .disableAutocorrection(true)
-        .padding(.horizontal, 50)
-        .padding(.top, 48)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(UIColor.systemGray4), lineWidth: 2))
+            .multilineTextAlignment(TextAlignment.center)
+            .disableAutocorrection(true)
+            .padding(.horizontal, 50)
+            .padding(.top, 48)
     }
 }
 
