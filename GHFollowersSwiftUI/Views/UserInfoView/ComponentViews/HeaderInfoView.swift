@@ -41,8 +41,10 @@ struct HeaderInfoView: View {
 
 struct HeaderInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = User(login: "aidanjames", avatarUrl: "https://avatars3.githubusercontent.com/u/44542889?v=4", name: "Aidan Pendlebury", location: "London", bio: "A good man with a nice hat", publicRepos: 1, publicGists: 0, htmlUrl: "https://github.com/aidanjames", following: 2, followers: 0, createdAt: "2018-10-28T08:50:08Z")
+        let user = User(login: "aidanjames", avatarUrl: "https://avatars3.githubusercontent.com/u/44542889?v=4", name: "Aidan Pendlebury", location: "London", bio: "A good man with a nice hat", publicRepos: 1, publicGists: 0, htmlUrl: "https://github.com/aidanjames", following: 2, followers: 0, createdAt: Date())
         
         return HeaderInfoView(user: user)
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }

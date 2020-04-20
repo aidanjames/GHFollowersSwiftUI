@@ -44,10 +44,11 @@ struct ItemInfoView: View {
 
 struct ItemInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = User(login: "aidanjames", avatarUrl: "", name: "Aidan Pendlebury", location: "London", bio: "I'm just a guy, standing in front of nothing.", publicRepos: 8, publicGists: 7, htmlUrl: "", following: 2, followers: 54, createdAt: "")
+        let user = User(login: "aidanjames", avatarUrl: "", name: "Aidan Pendlebury", location: "London", bio: "I'm just a guy, standing in front of nothing.", publicRepos: 8, publicGists: 7, htmlUrl: "", following: 2, followers: 54, createdAt: Date())
         return VStack {
             ItemInfoView(user: user, itemInfoType: .repos) { }
             ItemInfoView(user: user, itemInfoType: .followers) { }
         }
+        .previewLayout(.sizeThatFits)
     }
 }

@@ -60,7 +60,7 @@ struct UserInfoView: View {
                             self.newUsername = self.username
                             self.fetchFollowers()
                         }
-                        Text("GitHub since \(user?.createdAt.convertToDisplayFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
+                        Text("GitHub since \(user?.createdAt.convertToMonthYearFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
                     }
                     Spacer()
                 }

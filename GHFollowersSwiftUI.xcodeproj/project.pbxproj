@@ -15,9 +15,10 @@
 		3D5509782440BF5F00AD99AF /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5509772440BF5F00AD99AF /* SafariView.swift */; };
 		3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7703B0243291A300588C40 /* HeaderInfoView.swift */; };
 		3D7B0BAD2436619C0070AC45 /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B0BAC2436619C0070AC45 /* CountView.swift */; };
+		3D811925244E301B00D7BCA1 /* Date+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D811924244E301B00D7BCA1 /* Date+ext.swift */; };
 		3D8648D6240470630076EB62 /* FollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D5240470630076EB62 /* FollowerListView.swift */; };
 		3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648D72404784C0076EB62 /* NetworkManager.swift */; };
-		3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648DA240480D40076EB62 /* UIApplication-ext.swift */; };
+		3D8648DB240480D40076EB62 /* UIApplication+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8648DA240480D40076EB62 /* UIApplication+ext.swift */; };
 		3D892387240ED1660072761E /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D892386240ED1660072761E /* CustomAlertView.swift */; };
 		3D89BFF324045FC70005A3C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D89BFF224045FC70005A3C4 /* AppDelegate.swift */; };
 		3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D89BFF424045FC70005A3C4 /* SceneDelegate.swift */; };
@@ -31,11 +32,9 @@
 		3DBF4AA92446425E00F1AE15 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF4AA82446425E00F1AE15 /* PersistenceManager.swift */; };
 		3DBFC93B243D04A300692CD0 /* ItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBFC93A243D04A300692CD0 /* ItemInfoView.swift */; };
 		3DC0786B240705B7001EDEE6 /* FollowerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */; };
-		3DC51FA7243BBEB200EB768A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC51FA6243BBEB200EB768A /* Date+Ext.swift */; };
-		3DC51FA9243BBEBB00EB768A /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC51FA8243BBEBB00EB768A /* String+Ext.swift */; };
 		3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */; };
 		3DCA1EBE243E48A7002B8241 /* SearchTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA1EBD243E48A7002B8241 /* SearchTextFieldView.swift */; };
-		3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91BF2415370F004FB0BE /* Array-ext.swift */; };
+		3DCB91C02415370F004FB0BE /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91BF2415370F004FB0BE /* Array+ext.swift */; };
 		3DE95ED6240464D20038892B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED4240464D20038892B /* Follower.swift */; };
 		3DE95ED7240464D20038892B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED5240464D20038892B /* User.swift */; };
 		3DE95EDA240466720038892B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED9240466720038892B /* SearchView.swift */; };
@@ -53,9 +52,10 @@
 		3D5509772440BF5F00AD99AF /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		3D7703B0243291A300588C40 /* HeaderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderInfoView.swift; sourceTree = "<group>"; };
 		3D7B0BAC2436619C0070AC45 /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
+		3D811924244E301B00D7BCA1 /* Date+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ext.swift"; sourceTree = "<group>"; };
 		3D8648D5240470630076EB62 /* FollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListView.swift; sourceTree = "<group>"; };
 		3D8648D72404784C0076EB62 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		3D8648DA240480D40076EB62 /* UIApplication-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication-ext.swift"; sourceTree = "<group>"; };
+		3D8648DA240480D40076EB62 /* UIApplication+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ext.swift"; sourceTree = "<group>"; };
 		3D892386240ED1660072761E /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		3D89BFEF24045FC70005A3C4 /* GHFollowersSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowersSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D89BFF224045FC70005A3C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,11 +71,9 @@
 		3DBF4AA82446425E00F1AE15 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		3DBFC93A243D04A300692CD0 /* ItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoView.swift; sourceTree = "<group>"; };
 		3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCellView.swift; sourceTree = "<group>"; };
-		3DC51FA6243BBEB200EB768A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		3DC51FA8243BBEBB00EB768A /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3DCA1EBD243E48A7002B8241 /* SearchTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextFieldView.swift; sourceTree = "<group>"; };
-		3DCB91BF2415370F004FB0BE /* Array-ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-ext.swift"; sourceTree = "<group>"; };
+		3DCB91BF2415370F004FB0BE /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
 		3DE95ED4240464D20038892B /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follower.swift; path = ../../../GHFollowers/GHFollowers/Model/Follower.swift; sourceTree = "<group>"; };
 		3DE95ED5240464D20038892B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../GHFollowers/GHFollowers/Model/User.swift; sourceTree = "<group>"; };
 		3DE95ED9240466720038892B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			children = (
 				3DC0786A240705B7001EDEE6 /* FollowerCellView.swift */,
 				3D1AD9A7242579C500B10FC2 /* FilterView.swift */,
-				3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */,
 			);
 			path = ComponentViews;
 			sourceTree = "<group>";
@@ -137,10 +134,9 @@
 		3D8648D9240480C00076EB62 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3D8648DA240480D40076EB62 /* UIApplication-ext.swift */,
-				3DCB91BF2415370F004FB0BE /* Array-ext.swift */,
-				3DC51FA6243BBEB200EB768A /* Date+Ext.swift */,
-				3DC51FA8243BBEBB00EB768A /* String+Ext.swift */,
+				3D8648DA240480D40076EB62 /* UIApplication+ext.swift */,
+				3DCB91BF2415370F004FB0BE /* Array+ext.swift */,
+				3D811924244E301B00D7BCA1 /* Date+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +195,7 @@
 			children = (
 				3D1AD99B2425711600B10FC2 /* EmptyStateView.swift */,
 				3D892386240ED1660072761E /* CustomAlertView.swift */,
+				3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */,
 				3D0067C82422B9F300FEAE8A /* ActivityIndicator.swift */,
 				3D5509752440BBC100AD99AF /* ButtonView.swift */,
 				3DB0B4D92448B3350023FC67 /* AvatarImageView.swift */,
@@ -364,12 +361,12 @@
 				3D8648D82404784C0076EB62 /* NetworkManager.swift in Sources */,
 				3D5509782440BF5F00AD99AF /* SafariView.swift in Sources */,
 				3D7B0BAD2436619C0070AC45 /* CountView.swift in Sources */,
-				3DC51FA7243BBEB200EB768A /* Date+Ext.swift in Sources */,
+				3D811925244E301B00D7BCA1 /* Date+ext.swift in Sources */,
 				3D892387240ED1660072761E /* CustomAlertView.swift in Sources */,
 				3DE95ED6240464D20038892B /* Follower.swift in Sources */,
 				3D1D1FD92405BE2D003EF1D9 /* ErrorMessage.swift in Sources */,
 				3DE95ED7240464D20038892B /* User.swift in Sources */,
-				3DCB91C02415370F004FB0BE /* Array-ext.swift in Sources */,
+				3DCB91C02415370F004FB0BE /* Array+ext.swift in Sources */,
 				3DFDACB4244C878500D7D6C6 /* Constants.swift in Sources */,
 				3D5509762440BBC100AD99AF /* ButtonView.swift in Sources */,
 				3DBFC93B243D04A300692CD0 /* ItemInfoView.swift in Sources */,
@@ -382,10 +379,9 @@
 				3D1AD9A8242579C500B10FC2 /* FilterView.swift in Sources */,
 				3D1AD99C2425711600B10FC2 /* EmptyStateView.swift in Sources */,
 				3D89BFF524045FC70005A3C4 /* SceneDelegate.swift in Sources */,
-				3D8648DB240480D40076EB62 /* UIApplication-ext.swift in Sources */,
+				3D8648DB240480D40076EB62 /* UIApplication+ext.swift in Sources */,
 				3DB0B4DA2448B3350023FC67 /* AvatarImageView.swift in Sources */,
 				3DB0B4DD2448D9740023FC67 /* FavouritesCell.swift in Sources */,
-				3DC51FA9243BBEBB00EB768A /* String+Ext.swift in Sources */,
 				3DE95EDA240466720038892B /* SearchView.swift in Sources */,
 				3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */,
 				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,

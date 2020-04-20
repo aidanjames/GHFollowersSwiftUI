@@ -27,5 +27,6 @@ struct SearchTextFieldView: View {
 struct SearchTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         SearchTextFieldView(username: .constant(""))
+            .previewLayout(.sizeThatFits)
     }
 }

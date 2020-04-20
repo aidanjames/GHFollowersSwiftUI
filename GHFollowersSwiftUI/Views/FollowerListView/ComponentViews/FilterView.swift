@@ -59,5 +59,6 @@ struct FilterView: View {
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
         FilterView(searchText: .constant(""), navigationTitleHidden: .constant(true), showingCancelButton: .constant(false))
+            .previewLayout(.sizeThatFits)
     }
 }
