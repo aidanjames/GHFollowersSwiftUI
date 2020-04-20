@@ -87,7 +87,7 @@ struct FollowerListView: View {
                     .padding()
             }
         )
-            .onAppear(perform: self.fetchFollowers)
+        .onAppear(perform: self.fetchFollowers)
     }
     
     func fetchFollowers() {
@@ -115,7 +115,6 @@ struct FollowerListView: View {
     }
     
     func addFavourite() {
-        
         let user = newUserName == nil ? username : newUserName!
         
         NetworkManager.shared.getUserInfo(for: user) { result in
@@ -149,7 +148,6 @@ struct FollowerListView: View {
 
 struct FollowerListView_Previews: PreviewProvider {
     static var previews: some View {
-//        return FollowerListView(username: "SAllen0400")
         return FollowerListView(username: "SAllen0400", alertTitle: .constant(""), alertMessage: .constant(""), callToActionButton: .constant(""), showingCustomAlert: .constant(false))
     }
 }
