@@ -11,7 +11,7 @@ import SwiftUI
 struct AvatarImageView: View {
     
     var avatarURL: String
-    @State private var image = Image("avatar-placeholder")
+    @State private var image = Images.avatarPlaceholder
     
     var body: some View {
         image

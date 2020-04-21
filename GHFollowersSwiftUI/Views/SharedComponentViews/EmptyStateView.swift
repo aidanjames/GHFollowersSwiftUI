@@ -23,9 +23,9 @@ struct EmptyStateView: View {
                 .padding(.top, 85)
                 .frame(width: 310, height: 300)
                 .offset(y: 50)
-            Image("empty-state-logo")
+            Images.emptyStateLogo
                 .scaleEffect(1.1)
-            .offset(x: 100, y: 20)
+                .offset(x: 100, y: 20)
         }
     }
 }

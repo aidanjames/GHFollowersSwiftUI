@@ -16,7 +16,7 @@ struct ClearButton: ViewModifier {
             content
             if !text.isEmpty {
                 Button(action: { self.text = "" }) {
-                    Image(systemName: SFSymbols.deleteCircle)
+                    SFSymbols.deleteCircle
                         .foregroundColor(Color(UIColor.opaqueSeparator))
                         .padding(8)
                 }

@@ -17,7 +17,7 @@ struct FilterView: View {
     var body: some View {
         HStack(alignment: .center) {
             HStack {
-                Image(systemName: "magnifyingglass")
+                SFSymbols.magnifyingglass
                     .foregroundColor(.secondary)
                     .font(.headline)
                 TextField("Search for a username", text: self.$searchText)

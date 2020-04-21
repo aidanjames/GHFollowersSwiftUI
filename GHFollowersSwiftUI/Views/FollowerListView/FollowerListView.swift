@@ -83,7 +83,7 @@ struct FollowerListView: View {
         .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
         .navigationBarItems(trailing:
             Button(action: self.addFavourite) {
-                Image(systemName: "plus").font(Font.system(size: 22))
+                SFSymbols.plus.font(Font.system(size: 22))
                     .padding()
             }
         )

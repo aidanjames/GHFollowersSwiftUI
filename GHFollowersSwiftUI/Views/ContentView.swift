@@ -20,12 +20,12 @@ struct ContentView: View {
             TabView {
                 SearchView(alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingAlert)
                     .tabItem {
-                        Image(systemName: "magnifyingglass").font(Font.system(size: 25))
+                        SFSymbols.magnifyingglass.font(Font.system(size: 25))
                         Text("Search")
                 }
                 FavouritesView(alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingAlert)
                     .tabItem {
-                        Image(systemName: "star.fill").font(Font.system(size: 25))
+                        SFSymbols.starfill.font(Font.system(size: 25))
                         Text("Favourites")
                 }
             }

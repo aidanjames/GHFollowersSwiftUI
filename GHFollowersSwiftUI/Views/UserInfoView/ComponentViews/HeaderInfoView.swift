@@ -23,7 +23,7 @@ struct HeaderInfoView: View {
                     Text(user.login).font(.largeTitle).fontWeight(.bold).padding(.top).lineLimit(1)
                     Text(user.name ?? "").foregroundColor(.gray)
                     HStack {
-                        Image(systemName: "mappin.and.ellipse")
+                        SFSymbols.location
                         Text(user.location ?? "No Location")
                     }.foregroundColor(.gray)
                 }.padding(.leading, 12)

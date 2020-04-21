@@ -6,24 +6,26 @@
 //  Copyright © 2020 Aidan Pendlebury. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
 
 
 enum SFSymbols {
-    static let location = "mappin.and.ellipse"
-    static let repos = "folder"
-    static let gists = "text.alignleft"
-    static let followers = "person.2"
-    static let following = "heart"
-    
-    static let deleteCircle = "multiply.circle.fill"
-    static let deleteArrow = "delete.left"
+    static let location = Image(systemName: "mappin.and.ellipse")
+    static let repos = Image(systemName: "folder")
+    static let gists = Image(systemName: "text.alignleft")
+    static let followers = Image(systemName: "person.2")
+    static let following = Image(systemName: "heart")
+    static let deleteCircle = Image(systemName: "multiply.circle.fill")
+    static let magnifyingglass = Image(systemName: "magnifyingglass")
+    static let starfill = Image(systemName: "star.fill")
+    static let plus = Image(systemName: "plus")
 }
 
 
 enum Images {
     static let ghLogo = Image("gh-logo")
+    static let emptyStateLogo = Image("empty-state-logo")
+    static let avatarPlaceholder = Image("avatar-placeholder")
 }
 
 
