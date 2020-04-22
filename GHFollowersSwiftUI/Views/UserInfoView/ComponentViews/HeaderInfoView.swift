@@ -30,7 +30,7 @@ struct HeaderInfoView: View {
                 Spacer()
             }
             Text(user.bio ?? "No Bio").foregroundColor(.gray)
-                .lineLimit(2)
+                .lineLimit(3)
                 .padding(.horizontal, 20)
                 .padding(.top)
         }
