@@ -26,21 +26,20 @@ enum PersistenceManager {
         // Get the saved favourites (if they exist)
         retreiveFavourites { result in
             switch result {
-            case .success(let favourites):
-                var retrievedFavourites = favourites
+            case .success(var favourites):
                 switch actionType {
                 case .add: // If they're adding, check the favourite doesn't already exist
-                    guard !retrievedFavourites.contains(favourite) else {
+                    guard !favourites.contains(favourite) else {
                         completed(.alreadyInFavourites)
                         return
                     }
                     // Add to the favourites array (in memory)
-                    retrievedFavourites.append(favourite)
+                    favourites.append(favourite)
                 case .remove: // If they're removing, remove the favourite from the local memory array
-                    retrievedFavourites.removeAll { $0.login == favourite.login }
+                    favourites.removeAll { $0.login == favourite.login }
                 }
                 // Save the array from memory to user defaults.
-                completed(save(favourites: retrievedFavourites))
+                completed(save(favourites: favourites))
                 
             case .failure(let error):
                 completed(error)

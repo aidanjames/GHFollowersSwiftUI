@@ -37,6 +37,7 @@ struct FavouritesView: View {
             }
             .onAppear(perform: self.retrieveFavourites)
             .navigationBarTitle("Favourites")
+            
         }
     }
     
@@ -66,15 +67,16 @@ struct FavouritesView: View {
         
         if let index = offsets.first {
             PersistenceManager.updateWith(favourite: favourites[index], actionType: .remove) { error in
-                if let error = error {
-                    self.alertTitle = "Bad stuff happened"
-                    self.alertMessage = error.rawValue
-                    self.callToActionButton = "Ok"
-                    self.showingCustomAlert.toggle()
+                guard let error = error else {
+                    self.favourites.remove(atOffsets: offsets)
+                    if self.favourites.isEmpty { self.showingEmptyStateView = true }
+                    return
                 }
+                self.alertTitle = "Bad stuff happened"
+                self.alertMessage = error.rawValue
+                self.callToActionButton = "Ok"
+                self.showingCustomAlert.toggle()
             }
-            favourites.remove(atOffsets: offsets)
-            if favourites.isEmpty { self.showingEmptyStateView = true }
         }
     }
 }
