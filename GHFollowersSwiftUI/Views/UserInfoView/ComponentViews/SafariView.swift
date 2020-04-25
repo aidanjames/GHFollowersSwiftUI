@@ -25,6 +25,6 @@ struct SafariView: UIViewControllerRepresentable {
 
 struct SafariView_Previews: PreviewProvider {
     static var previews: some View {
-        SafariView(url:URL(string: "https://duckduckgo.com")!)
+        SafariView(url: URL(string: "https://duckduckgo.com")!)
     }
 }

@@ -40,7 +40,7 @@ struct FollowerListView: View {
             return filteredFollowers.chunked(into: 3)
         }
     }
-
+    
     
     var body: some View {
         ZStack {
@@ -82,18 +82,28 @@ struct FollowerListView: View {
         .navigationBarHidden(self.hideNavBar)
         .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
         .navigationBarItems(trailing:
-            Button(action: self.addFavourite) {
-                SFSymbols.plus.font(Font.system(size: 22))
-                    .padding()
+            HStack {
+                // Comment this button out if you want to remove the ability to view the profile of the user
+                Button(action: {
+                    self.selectedUser = self.newUserName == nil ? self.username : self.newUserName!
+                    self.showingUserInfoView.toggle()
+                }) {
+                    ButtonView(color: .green, text: "User info").scaleEffect(0.8)
+                }
+                Button(action: self.addFavourite) {
+                    SFSymbols.plus.font(Font.system(size: 22))
+                        .padding()
+                }
             }
         )
-        .onAppear(perform: self.fetchFollowers)
+            .onAppear(perform: self.fetchFollowers)
     }
     
     func fetchFollowers() {
         UITableView.appearance().separatorStyle = .none // This removes the divider lines in the list
+        let userName = self.newUserName == nil ? self.username : self.newUserName!
         self.loadingData = true
-        NetworkManager.shared.getFollowers(for: self.newUserName == nil ? self.username : self.newUserName!, page: page) { result in
+        NetworkManager.shared.getFollowers(for: userName, page: page) { result in
             DispatchQueue.main.async { self.loadingData = false }
             switch result {
             case .success(let followers):
@@ -142,7 +152,6 @@ struct FollowerListView: View {
             }
         }
     }
-    
     
 }
 

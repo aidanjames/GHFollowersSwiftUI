@@ -37,7 +37,6 @@ struct FavouritesView: View {
             }
             .onAppear(perform: self.retrieveFavourites)
             .navigationBarTitle("Favourites")
-            
         }
     }
     
