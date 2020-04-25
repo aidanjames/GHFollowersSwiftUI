@@ -31,7 +31,7 @@ struct SearchView: View {
                     Images.ghLogo.resizable().scaledToFit().frame(width: 200, height: 200).padding(.top, DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80)
                     SearchTextFieldView(username: $username)
                     Spacer()
-                    NavigationLink(destination: FollowerListView(username: self.username, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
+                    NavigationLink(destination: ExperimentalFollowerListView(username: self.username, alertTitle: self.$alertTitle, alertMessage: self.$alertMessage, callToActionButton: self.$callToActionButton, showingCustomAlert: self.$showingCustomAlert)) {
                             ButtonView(color: .green, text: "Get Followers").padding(.horizontal, 50).padding(.bottom, 50)
                     }.disabled(getFollowersButtonDisabled) // So they can't navigate to list view they've not entered a username.
                 }
