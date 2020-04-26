@@ -65,7 +65,7 @@ struct ExperimentalFollowerListView: View {
                                 SafariView(url: self.url!).edgesIgnoringSafeArea(.all)
                         }
                     if showingEmptyStateView {
-                        Text("This loser has no followers ☹️").padding()
+                        Text("This user has no followers ☹️").padding()
                     } else {
                        HStack {
                             Text("Followers").font(.headline)
