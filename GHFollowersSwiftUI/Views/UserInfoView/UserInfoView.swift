@@ -39,43 +39,52 @@ struct UserInfoView: View {
     var body: some View {
         ZStack {
             NavigationView {
-                VStack {
-                    if user != nil {
-                        HeaderInfoView(user: user!)
-                        ItemInfoView(user: user!, itemInfoType: .repos) {
-                            guard self.url != nil else { return }
-                            self.showingSafari.toggle()
-                        }
-                        .sheet(isPresented: $showingSafari) {
-                            SafariView(url: self.url!).edgesIgnoringSafeArea(.all)
-                        }
-                        ItemInfoView(user: user!, itemInfoType: .followers) {
-                            guard self.user?.followers != 0 else {
-                                self.errorTitle = "No followers"
-                                self.error = "This user has no followers. What a shame ☹️."
-                                self.showingError.toggle()
-                                return
+                if user != nil {
+                    ScrollView {
+                        VStack {
+                            HeaderInfoView(user: user!)
+                            ItemInfoView(user: user!, itemInfoType: .repos) {
+                                guard self.url != nil else { return }
+                                self.showingSafari.toggle()
                             }
-                            self.presentationMode.wrappedValue.dismiss()
-                            self.newUsername = self.username
-                            self.fetchFollowers()
+                            .sheet(isPresented: $showingSafari) {
+                                SafariView(url: self.url!).edgesIgnoringSafeArea(.all)
+                            }
+                            ItemInfoView(user: user!, itemInfoType: .followers) {
+                                guard self.user?.followers != 0 else {
+                                    self.errorTitle = "No followers"
+                                    self.error = "This user has no followers. What a shame ☹️."
+                                    self.showingError.toggle()
+                                    return
+                                }
+                                self.presentationMode.wrappedValue.dismiss()
+                                self.newUsername = self.username
+                                self.fetchFollowers()
+                            }
+                            Text("GitHub since \(user?.createdAt.convertToMonthYearFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
+                            Spacer()
                         }
-                        Text("GitHub since \(user?.createdAt.convertToMonthYearFormat() ?? "Unknown")").padding(.top).foregroundColor(.secondary)
+                        .navigationBarTitle(Text(""), displayMode: .inline)
+                        .navigationBarItems(trailing:
+                            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                                Text("Done").foregroundColor(.green)
+                            }
+                        )
                     }
-                    Spacer()
+                } else {
+                    ActivityIndicatorView()
+                    .navigationBarTitle(Text(""), displayMode: .inline)
+                    .navigationBarItems(trailing:
+                        Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                            Text("Done").foregroundColor(.green)
+                        }
+                    )
                 }
-                .onAppear(perform: fetchUserInfo)
-                .navigationBarTitle(Text(""), displayMode: .inline)
-                .navigationBarItems(trailing:
-                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                        Text("Done").foregroundColor(.green)
-                    }
-                )
             }
             if showingError {
                 CustomAlertView(titleLabel: errorTitle, bodyLabel: error ?? "Unknown error", callToActionButton: errorButtonText, showingModal: $showingError)
             }
-        }
+        }.onAppear(perform: fetchUserInfo)
     }
     
     func fetchUserInfo() {
