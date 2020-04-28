@@ -35,7 +35,6 @@
 		3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */; };
 		3DCA1EBE243E48A7002B8241 /* SearchTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA1EBD243E48A7002B8241 /* SearchTextFieldView.swift */; };
 		3DCB91C02415370F004FB0BE /* Array+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB91BF2415370F004FB0BE /* Array+ext.swift */; };
-		3DD09AD32454944800ECB47E /* ExperimentalFollowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD09AD22454944800ECB47E /* ExperimentalFollowerListView.swift */; };
 		3DE95ED6240464D20038892B /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED4240464D20038892B /* Follower.swift */; };
 		3DE95ED7240464D20038892B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED5240464D20038892B /* User.swift */; };
 		3DE95EDA240466720038892B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE95ED9240466720038892B /* SearchView.swift */; };
@@ -75,7 +74,6 @@
 		3DC834452426AC8D00743FC8 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3DCA1EBD243E48A7002B8241 /* SearchTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextFieldView.swift; sourceTree = "<group>"; };
 		3DCB91BF2415370F004FB0BE /* Array+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ext.swift"; sourceTree = "<group>"; };
-		3DD09AD22454944800ECB47E /* ExperimentalFollowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalFollowerListView.swift; sourceTree = "<group>"; };
 		3DE95ED4240464D20038892B /* Follower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Follower.swift; path = ../../../GHFollowers/GHFollowers/Model/Follower.swift; sourceTree = "<group>"; };
 		3DE95ED5240464D20038892B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../../../GHFollowers/GHFollowers/Model/User.swift; sourceTree = "<group>"; };
 		3DE95ED9240466720038892B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -239,20 +237,11 @@
 			path = ComponentViews;
 			sourceTree = "<group>";
 		};
-		3DD09AD12454942200ECB47E /* ExperimentalFollowerListView */ = {
-			isa = PBXGroup;
-			children = (
-				3DD09AD22454944800ECB47E /* ExperimentalFollowerListView.swift */,
-			);
-			path = ExperimentalFollowerListView;
-			sourceTree = "<group>";
-		};
 		3DE95ED0240464980038892B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3D89BFF624045FC70005A3C4 /* ContentView.swift */,
 				3DCA1EBB243E486A002B8241 /* SearchView */,
-				3DD09AD12454942200ECB47E /* ExperimentalFollowerListView */,
 				3D1AD9A52425775800B10FC2 /* FollowerListView */,
 				3DA5CBD3242E926C00DEB805 /* UserInfoView */,
 				3DA44228243F77B4008A1A39 /* FavouritesView */,
@@ -397,7 +386,6 @@
 				3D7703B1243291A300588C40 /* HeaderInfoView.swift in Sources */,
 				3DC834462426AC8D00743FC8 /* ActivityIndicatorView.swift in Sources */,
 				3DCA1EBE243E48A7002B8241 /* SearchTextFieldView.swift in Sources */,
-				3DD09AD32454944800ECB47E /* ExperimentalFollowerListView.swift in Sources */,
 				3DE95EDC240466FF0038892B /* FavouritesView.swift in Sources */,
 				3DA5CBD5242E928600DEB805 /* UserInfoView.swift in Sources */,
 				3D89BFF724045FC70005A3C4 /* ContentView.swift in Sources */,

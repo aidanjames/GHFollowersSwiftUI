@@ -25,7 +25,7 @@ struct FollowerCellView: View {
 
 struct FollowerListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowerCellView(username: "aidanjames", imageURL: "www.google.com")
+        FollowerCellView(username: "aidanjames", imageURL: "https://avatars3.githubusercontent.com/u/44542889?v=4")
             .previewLayout(.sizeThatFits)
     }
 }

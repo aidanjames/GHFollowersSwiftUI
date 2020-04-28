@@ -82,18 +82,9 @@ struct FollowerListView: View {
         .navigationBarHidden(self.hideNavBar)
         .navigationBarTitle("\(self.newUserName == nil ? self.username : self.newUserName!)", displayMode: .large)
         .navigationBarItems(trailing:
-            HStack {
-                // Comment this button out to remove the ability to view the profile of the user
-//                Button(action: {
-//                    self.selectedUser = self.newUserName == nil ? self.username : self.newUserName!
-//                    self.showingUserInfoView.toggle()
-//                }) {
-//                    ButtonView(color: .green, text: "User info").scaleEffect(0.8)
-//                }
-                Button(action: self.addFavourite) {
-                    SFSymbols.plus.font(Font.system(size: 22))
-                        .padding()
-                }
+            Button(action: self.addFavourite) {
+                SFSymbols.plus.font(Font.system(size: 22))
+                    .padding()
             }
         )
             .onAppear(perform: self.fetchFollowers)

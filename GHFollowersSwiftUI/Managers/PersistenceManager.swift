@@ -12,7 +12,6 @@ enum PersistenceActionType {
     case add, remove
 }
 
-
 enum PersistenceManager {
     
     static private let defaults = UserDefaults.standard
@@ -23,22 +22,21 @@ enum PersistenceManager {
     
     
     static func updateWith(favourite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
-        // Get the saved favourites (if they exist)
+
         retreiveFavourites { result in
             switch result {
             case .success(var favourites):
                 switch actionType {
-                case .add: // If they're adding, check the favourite doesn't already exist
+                case .add:
                     guard !favourites.contains(favourite) else {
                         completed(.alreadyInFavourites)
                         return
                     }
-                    // Add to the favourites array (in memory)
                     favourites.append(favourite)
-                case .remove: // If they're removing, remove the favourite from the local memory array
+                case .remove:
                     favourites.removeAll { $0.login == favourite.login }
                 }
-                // Save the array from memory to user defaults.
+
                 completed(save(favourites: favourites))
                 
             case .failure(let error):
@@ -49,13 +47,12 @@ enum PersistenceManager {
     
     
     static func retreiveFavourites(completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        // Check to see if we already have favourites data saved, if not, return an empty array as the success result type.
+
         guard let favouritesData = defaults.object(forKey: Keys.favourites) as? Data else {
             completed(.success([]))
             return
         }
         
-        // If we're here, we have stored favourites data which we need to decode and return
         do {
             let decoder = JSONDecoder()
             let followers = try decoder.decode([Follower].self, from: favouritesData)
@@ -67,7 +64,7 @@ enum PersistenceManager {
     
     
     static func save(favourites: [Follower]) -> GFError? {
-        // We need to encode the object to data and then save to defaults.
+
         do {
             let encoder = JSONEncoder()
             let encodedFavourites = try encoder.encode(favourites)

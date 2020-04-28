@@ -29,5 +29,6 @@ struct FavouritesCell_Previews: PreviewProvider {
     static var previews: some View {
         let follower = Follower(login: "Sallen0400", avatarUrl: "https://avatars2.githubusercontent.com/u/10645516?v=4")
         return FavouritesCell(follower: follower)
+            .previewLayout(.sizeThatFits)
     }
 }
