@@ -11,7 +11,6 @@ import SwiftUI
 struct SearchView: View {
     
     @State private var username = ""
-    @State private var action: Int? = 0
     
     var getFollowersButtonDisabled: Bool {
         return username.isEmpty
